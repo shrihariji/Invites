@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wedding Invitation</title>
+  <meta name="theme-color" content="#0d1633">
+  <!-- WhatsApp / social link preview (set og:url and an absolute og:image after deploying) -->
+  <meta property="og:title" content="You are invited - Aarav & Meera">
+  <meta property="og:description" content="Tap to open our royal wedding invitation.">
+  <meta property="og:image" content="assets/img/og-preview.jpg">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/gate-left.webp">
+  <link rel="preload" as="image" href="assets/img/gate-right.webp">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="locked">
+  <canvas id="petals" aria-hidden="true"></canvas>
+
+  <!-- ===== Gate (opening screen) ===== -->
+  <div id="gate" aria-label="Invitation gate">
+    <div class="gate-stage">
+      <div class="door door-left"><img src="assets/img/gate-left.webp" alt=""></div>
+      <div class="door door-right"><img src="assets/img/gate-right.webp" alt=""></div>
+    </div>
+    <div class="gate-burst"></div>
+    <div class="gate-ui">
+      <p class="gate-dear">Dear <span data-guest></span>,</p>
+      <p class="gate-sub">you are invited to a royal celebration</p>
+    </div>
+    <button id="seal" aria-label="Tap the seal to open the invitation">
+      <img src="assets/img/seal.webp" alt="">
+      <span class="seal-hint">Tap to open</span>
+    </button>
+  </div>
+
+  <main id="app">
+    <!-- ===== Hero: palace + names ===== -->
+    <section class="hero">
+      <div class="hero-bg">
+        <img class="hero-still" src="assets/img/palace.webp" alt="">
+        <video class="hero-video" muted loop playsinline preload="none" poster="assets/img/palace.webp"></video>
+      </div>
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="blessing" data-field="blessingLine"></p>
+        <p class="eyebrow" data-field="heroLine"></p>
+        <h1 class="names">
+          <span class="name" data-field="groom.first"></span>
+          <span class="amp">&amp;</span>
+          <span class="name" data-field="bride.first"></span>
+        </h1>
+        <p class="hero-date" data-hero-date></p>
+      </div>
+      <img class="hero-couple" src="assets/img/couple.webp" alt="Illustration of the bride and groom">
+      <div class="scroll-cue"><span></span>Scroll</div>
+    </section>
+
+    <!-- ===== Invitation text ===== -->
+    <section class="paper invite">
+      <img class="toran" src="assets/img/toran.webp" alt="">
+      <div class="inner">
+        <p class="eyebrow gold reveal">Dear <span data-guest></span></p>
+        <p class="lead reveal" data-field="inviteText"></p>
+        <div class="families reveal">
+          <div>
+            <h3 data-field="groom.full"></h3>
+            <p>Son of <span data-field="groom.parents"></span></p>
+          </div>
+          <div class="weds" data-field="joinWord"></div>
+          <div>
+            <h3 data-field="bride.full"></h3>
+            <p>Daughter of <span data-field="bride.parents"></span></p>
+          </div>
+        </div>
+        <div class="divider reveal"></div>
+      </div>
+    </section>
+
+    <!-- ===== Scratch to reveal the date ===== -->
+    <section class="paper date-section">
+      <div class="inner">
+        <h2 class="title reveal">Save the Date</h2>
+        <p class="note reveal">Scratch the golden heart to reveal our day</p>
+        <div class="heart-wrap reveal">
+          <div class="heart">
+            <div class="heart-content">
+              <span class="d-weekday" data-field="dateReveal.weekday"></span>
+              <span class="d-day" data-field="dateReveal.day"></span>
+              <span class="d-month" data-field="dateReveal.month"></span>
+              <span class="d-year" data-field="dateReveal.year"></span>
+            </div>
+            <canvas id="scratch"></canvas>
+          </div>
+        </div>
+        <div class="countdown reveal" id="countdown">
+          <div><b data-cd="d">0</b><span>Days</span></div>
+          <div><b data-cd="h">0</b><span>Hours</span></div>
+          <div><b data-cd="m">0</b><span>Minutes</span></div>
+          <div><b data-cd="s">0</b><span>Seconds</span></div>
+        </div>
+        <button class="btn ghost reveal" id="addCal">Add to calendar</button>
+      </div>
+    </section>
+
+    <!-- ===== Story ===== -->
+    <section class="paper story">
+      <div class="inner">
+        <h2 class="title reveal" data-field="story.title"></h2>
+        <img class="story-art reveal" data-src="story.image" alt="Illustration of the couple" loading="lazy">
+        <div class="story-text" id="storyText"></div>
+      </div>
+    </section>
+
+    <!-- ===== Events ===== -->
+    <section class="maroon events">
+      <div class="inner">
+        <h2 class="title light reveal">The Celebrations</h2>
+        <div id="eventList"></div>
+      </div>
+    </section>
+
+    <!-- ===== Venue ===== -->
+    <section class="paper venue">
+      <div class="inner">
+        <h2 class="title reveal">The Venue</h2>
+        <div class="venue-art reveal"><img src="assets/img/venue.webp" alt="Painting of the venue" loading="lazy"></div>
+        <h3 class="venue-name reveal" data-field="venue.name"></h3>
+        <p class="reveal" data-field="venue.address"></p>
+        <a class="btn reveal" data-href="venue.map" target="_blank" rel="noopener">Get directions</a>
+      </div>
+    </section>
+
+    <!-- ===== Blessings ===== -->
+    <section class="paper blessings">
+      <div class="inner">
+        <h2 class="title reveal">With Blessings From</h2>
+        <div id="blessList"></div>
+      </div>
+    </section>
+
+    <!-- ===== RSVP ===== -->
+    <section class="night rsvp">
+      <div class="inner">
+        <img class="rsvp-art reveal" src="assets/img/namaste.webp" alt="Illustration of the couple greeting with a namaste" loading="lazy">
+        <h2 class="title light reveal">Will you join us?</h2>
+        <p class="note light reveal">Kindly reply by <span data-field="rsvp.by"></span></p>
+        <form id="rsvpForm" class="reveal" onsubmit="return false">
+          <div class="choice">
+            <label><input type="radio" name="att" value="yes" checked><span>Joyfully attending</span></label>
+            <label><input type="radio" name="att" value="no"><span>Will bless from afar</span></label>
+          </div>
+          <label class="count">Number of guests
+            <select name="count"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select>
+          </label>
+          <textarea name="msg" rows="3" placeholder="A message for the couple (optional)"></textarea>
+          <button class="btn gold" id="rsvpBtn" type="button">Send reply on WhatsApp</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p class="sign">With love,</p>
+      <p class="names small"><span data-field="groom.first"></span> &amp; <span data-field="bride.first"></span></p>
+      <p class="tag" data-field="hashtag"></p>
+    </footer>
+  </main>
+
+  <button id="music" aria-label="Pause music" hidden>
+    <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>
+  </button>
+  <audio id="bgm" src="assets/audio/music.mp3" loop preload="auto"></audio>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

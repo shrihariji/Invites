@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Invitations</title>
+  <meta property="og:title" content="Royal Digital Invitations">
+  <meta property="og:description" content="Tap to see our wedding and engagement invitation designs.">
+  <meta property="og:image" content="royal-wedding/assets/img/og-preview.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital@0;1&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    body { min-height: 100svh; background: radial-gradient(ellipse at top, #8a1726, #3d0710 70%); color: #f7ead0;
+      font-family: "Cormorant Garamond", Georgia, serif; text-align: center; padding: 48px 16px; }
+    h1 { font-family: "Pinyon Script", cursive; font-weight: 400; font-size: 56px; color: #f1d68b; }
+    p { font-style: italic; font-size: 19px; margin: 8px 0 32px; }
+    .grid { display: grid; gap: 22px; max-width: 760px; margin: 0 auto; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    a { display: block; text-decoration: none; color: inherit; border: 1px solid #f1d68b88; border-radius: 20px; overflow: hidden; background: #ffffff0d; }
+    .thumb { position: relative; aspect-ratio: 3 / 4; overflow: hidden; display: flex; align-items: flex-end; justify-content: center; }
+    .thumb.gates img { width: 50%; height: 100%; object-fit: cover; object-position: center 45%; }
+    .thumb.gates img:first-child { object-position: right 45%; }
+    .thumb.gates img:last-child { object-position: left 45%; }
+    .thumb .couple { width: 62%; filter: drop-shadow(0 8px 18px #000a); }
+    a span { display: block; padding: 14px; font-family: "Cinzel", serif; letter-spacing: .15em; text-transform: uppercase; color: #f1d68b; }
+  </style>
+</head>
+<body>
+  <h1>Royal Invitations</h1>
+  <p>Tap a design to open it, with sound on</p>
+  <div class="grid">
+    <a href="royal-wedding/"><div class="thumb gates"><img src="royal-wedding/assets/img/gate-left.webp" alt=""><img src="royal-wedding/assets/img/gate-right.webp" alt=""></div><span>Wedding</span></a>
+    <a href="royal-engagement/"><div class="thumb" style="background:url(royal-engagement/assets/img/palace.webp) center 30% / cover"><img class="couple" src="royal-engagement/assets/img/couple.webp" alt=""></div><span>Engagement</span></a>
+  </div>
+</body>
+</html>
