@@ -63,7 +63,7 @@
   };
   $("#scenes").innerHTML = events.map((e) => `<section class="scene" id="ev-${e.id}" data-ev="${e.id}">
       <div class="cover"><div class="art"><div class="kb">
-        <img src="assets/img/${e.id}.webp" alt="" loading="lazy">
+        <img src="assets/img/${e.id}.webp" alt="" loading="lazy" decoding="async" draggable="false">
         ${RITUAL[e.id] ? RITUAL[e.id](POS[e.id]) : ""}
         <div class="band">
           <img class="gu" src="assets/img/gu-${e.id}.webp" alt="${esc(e.gu)}">
@@ -73,7 +73,7 @@
         </div>
       </div></div></div></section>`).join(`<div class="seam" aria-hidden="true"><i></i><b></b><i></i></div>`);
   if (!D.showLogo) $("#logo").remove();
-  $("#reel").innerHTML = D.photos.map((p, i) => `<figure><img src="assets/photos/${p}.webp" alt="Photo ${i + 1} of the couple" loading="lazy"></figure>`).join("");
+  $("#reel").innerHTML = D.photos.map((p, i) => `<figure><img src="assets/photos/${p}.webp" alt="Photo ${i + 1} of the couple" loading="lazy" decoding="async" draggable="false"></figure>`).join("");
   $("#dots").innerHTML = D.photos.map(() => "<i></i>").join("");
   const hintText = (id, n) => t(n && `h_${id}_n` in T.en ? `h_${id}_n` : `h_${id}`) + (n ? ` · ${num(n)}/${num(3)}` : "");
 
@@ -137,9 +137,13 @@
 
   // ---------- Particles (petals, gold dust, marigolds, notes, ripples) ----------
   const cv = $("#fx"), cx = cv.getContext("2d");
-  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const dpr = Math.min(devicePixelRatio || 1, matchMedia("(pointer: coarse)").matches ? 1.5 : 2);
   let W, H, parts = [], ambient = null, raf = 0;
-  const fit = () => { W = cv.width = innerWidth * dpr; H = cv.height = innerHeight * dpr; };
+  let lastW = 0;
+  const fit = () => {
+    if (innerWidth === lastW && cv.height >= innerHeight * dpr) return;   // address bar moved: keep the canvas
+    lastW = innerWidth; W = cv.width = innerWidth * dpr; H = cv.height = Math.max(innerHeight, screen.height || 0) * dpr;
+  };
   fit(); addEventListener("resize", fit);
   const PAL = {
     jasmine: ["#ffffff", "#fff8e8", "#fdf0d2", "#f1d68b"],
@@ -205,6 +209,7 @@
 
   // ---------- Opening ----------
   gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.config({ ignoreMobileResize: true, autoRefreshEvents: "visibilitychange,DOMContentLoaded,load" });
   const heroBits = [".shlokas", ".names", ".range", ".city"];
   gsap.set(heroBits, { opacity: 0, y: 20 });
   gsap.set(".om", { clipPath: "inset(0 0 100% 0)" });
@@ -298,7 +303,7 @@
 
   // ---------- Scroll motion ----------
   if (!calm) {
-    $$(".reveal").forEach((el) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 90%" } }));
+    $$(".reveal").forEach((el) => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 90%", once: true } }));
     gsap.fromTo(".stick .art img", { scale: 1.02 }, { scale: 1.12, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom bottom", scrub: true } });
     gsap.fromTo(".family .art img", { scale: 1.12 }, { scale: 1, ease: "none", scrollTrigger: { trigger: ".family", scrub: true } });
   }
@@ -334,6 +339,14 @@
   }
 
   $$(".seam").forEach((el) => ScrollTrigger.create({ trigger: el, start: "top 85%", once: true, onEnter: () => el.classList.add("on") }));
+
+  // stop double-tap zoom / long-press menus on the interactive parts (Safari, Chrome, Android browsers)
+  let lastTap = 0;
+  document.addEventListener("touchend", (e) => {
+    if (!e.target.closest(".hit, .hold, .pad, .reel")) return;
+    const now = Date.now(); if (now - lastTap < 350) e.preventDefault(); lastTap = now;
+  }, { passive: false });
+  document.addEventListener("dblclick", (e) => e.preventDefault(), { passive: false });
 
   // ---------- Rituals ----------
   function finish(sc) {
@@ -376,7 +389,7 @@
   function taps(sc, art, onTap, onDone) {
     const hit = $(".hit", sc), hint = $(".ritual-hint", sc), need = 3;
     let n = 0;
-    hit.addEventListener("click", (e) => {
+    hit.addEventListener("pointerdown", (e) => {   // fires on touch-down: fast taps all count, no click delay
       if (sc.classList.contains("done")) return;
       n++; S.unlock();
       const r = hit.getBoundingClientRect();
@@ -553,18 +566,22 @@
   };
   tick(); setInterval(tick, 1000);
 
-  // ---------- Photo reel (gentle cover-flow) ----------
+  // ---------- Photo reel: native swipe + snap; the centred photo gets a soft lift (no per-frame work) ----------
   const reel = $("#reel"), figs = $$("figure", reel), dots = $$("#dots i");
-  function flow() {
-    const r = reel.getBoundingClientRect(), mid = r.left + r.width / 2; let best = 0, bd = 1e9;
-    figs.forEach((f, i) => {
-      const fr = f.getBoundingClientRect(), off = (fr.left + fr.width / 2 - mid) / fr.width;
-      if (Math.abs(off) < bd) { bd = Math.abs(off); best = i; }
-      if (!calm) f.style.transform = `rotateY(${Math.max(-1, Math.min(1, off)) * -16}deg) rotate(${off * 2}deg) scale(${1 - Math.min(1, Math.abs(off)) * .08})`;
-    });
-    dots.forEach((d, i) => d.classList.toggle("on", i === best));
+  const setOn = (i) => { figs.forEach((f, k) => f.classList.toggle("on", k === i)); dots.forEach((d, k) => d.classList.toggle("on", k === i)); };
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((list) => list.forEach((en) => { if (en.isIntersecting) setOn(figs.indexOf(en.target)); }),
+      { root: reel, threshold: 0.6 });
+    figs.forEach((f) => io.observe(f));
   }
-  reel.addEventListener("scroll", () => requestAnimationFrame(flow), { passive: true }); flow();
+  // backup for browsers without IntersectionObserver timing: once the swipe settles, mark the centred photo
+  let rt = 0;
+  reel.addEventListener("scroll", () => { clearTimeout(rt); rt = setTimeout(() => {
+    const mid = reel.scrollLeft + reel.clientWidth / 2;
+    let best = 0, bd = 1e9; figs.forEach((f, i) => { const d = Math.abs(f.offsetLeft + f.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = i; } });
+    setOn(best);
+  }, 90); }, { passive: true });
+  setOn(0);
   const viewer = $("#viewer");
   reel.addEventListener("click", (e) => { const im = e.target.closest("img"); if (!im) return; $("img", viewer).src = im.src; viewer.hidden = false; });
   function closeViewer() { viewer.hidden = true; }

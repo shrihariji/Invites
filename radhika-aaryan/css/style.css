@@ -397,3 +397,22 @@ body.locked[data-opener="gates"] #curtain { box-shadow: 0 0 60px #000c; }
 /* maker credit now sits quietly under "Blessings Only" in the family card */
 .fam-card .credit { margin: 16px auto 0; padding: 10px 0 0; max-width: 80%; background: none; border-top: 1px solid #e3cfa588; opacity: .7; font-size: 11px; }
 .family { padding-bottom: 16svh; }
+
+/* ================= Mobile smoothness (Safari / Chrome / Android browsers) ================= */
+html { touch-action: manipulation; -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none; }
+.hit, .hold, .pad, .ritual-hint, .details-btn, #seal, #lang button, #sound, .btn, .scene img, .reel img {
+  -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; touch-action: manipulation; }
+.pad, .hold, #scratch { touch-action: none; }
+.scene { -webkit-user-select: none; user-select: none; }
+
+/* gallery: native swipe + snap, no 3D work while swiping */
+.reel { perspective: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; touch-action: pan-x pan-y; }
+.reel figure { scroll-snap-stop: always; transform: scale(.92); opacity: .82; transition: transform .45s cubic-bezier(.2,.7,.2,1), opacity .45s; will-change: transform; }
+.reel figure.on { transform: scale(1); opacity: 1; }
+.reel img { aspect-ratio: 2 / 3; background: #efe4cf; }
+
+/* phones: the blurred/fixed page backdrop is never seen (the invite fills the screen) - skip the heavy painting */
+@media (max-width: 520px), (pointer: coarse) {
+  body, body.locked[data-opener="gates"] { background-image: none !important; background-attachment: scroll !important; }
+  body::before, body.locked[data-opener="gates"]::before { display: none !important; }
+}
