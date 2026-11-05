@@ -393,3 +393,7 @@ body.locked[data-opener="gates"] #curtain { box-shadow: 0 0 60px #000c; }
 .hold span { display: none; }
 .scene:not(.done) .hold svg { animation: bloom 2.6s ease-in-out infinite; }
 @keyframes bloom { 50% { filter: drop-shadow(0 6px 10px #0005) drop-shadow(0 0 14px #ffd3e0); } }
+
+/* maker credit now sits quietly under "Blessings Only" in the family card */
+.fam-card .credit { margin: 16px auto 0; padding: 10px 0 0; max-width: 80%; background: none; border-top: 1px solid #e3cfa588; opacity: .7; font-size: 11px; }
+.family { padding-bottom: 16svh; }
