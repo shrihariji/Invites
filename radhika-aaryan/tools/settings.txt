@@ -1,9 +1,0 @@
-# Where the invite lives. Change this after publishing.
-# While testing on this computer use: http://localhost:8768/
-base_url = https://shrihariji.github.io/Invites/radhika-aaryan/
-
-# The WhatsApp message each guest receives. {name} and {link} are filled in.
-message = નમસ્તે {name}! 🙏 વડીલોના આશીર્વાદ સાથે, રાધિકા અને આર્યનના શુભ લગ્નોત્સવ (30 Dec 2026 – 02 Jan 2027) માં આપને સહ પરિવાર પધારવા ભાવભર્યું નિમંત્રણ. આપનું આમંત્રણ અહીં ખોલો: {link}
-
-# Which music the guest links use: vocal or instrumental (leave empty for the default in data.js)
-music = vocal
