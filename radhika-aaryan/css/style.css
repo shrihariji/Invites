@@ -416,3 +416,18 @@ html { touch-action: manipulation; -webkit-tap-highlight-color: transparent; ove
   body, body.locked[data-opener="gates"] { background-image: none !important; background-attachment: scroll !important; }
   body::before, body.locked[data-opener="gates"]::before { display: none !important; }
 }
+
+/* ---------- Scrolling always wins on rituals: vertical swipes scroll the page ---------- */
+.pad, #scratch, .hold { touch-action: pan-y !important; }
+.scene.done .pad, .scene.done .hold, .scene.done .hit, #scratch.done { pointer-events: none !important; }
+
+/* ---------- Mehendi: rub the palms ---------- */
+.rub { position: absolute; transform: translate(-50%, -50%); aspect-ratio: 712 / 900; touch-action: pan-y; z-index: 2;
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; filter: drop-shadow(0 12px 18px #5a2a1a55); }
+.rub img, .rub canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.rub canvas { transition: opacity .9s ease; }
+.rub.revealed canvas { opacity: 0; }
+.rub.revealed { filter: drop-shadow(0 12px 18px #5a2a1a55) drop-shadow(0 0 22px #ffd9a8aa); }
+.scene.done .rub { pointer-events: none; }
+.hint-hand[data-k="rub"] { animation: gRub 1.8s ease-in-out infinite; }
+@keyframes gRub { 0%, 100% { transform: translate(-80%, -19%) rotate(-8deg); } 50% { transform: translate(-16%, -19%) rotate(8deg); } }

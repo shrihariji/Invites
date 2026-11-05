@@ -46,14 +46,16 @@
   const dayParts = (d) => { const m = /^([\d૦-૯]+)(\D*)$/.exec(d) || [d, d, ""]; return [m[1], m[2]]; };
   // Ritual positions are % of the painting. data.js can override them per invite with ritualPos.
   const POS = Object.assign({
-    mehendi: { x: 50, y: 75, w: 54 }, survani: { x: 29, y: 86, w: 24, h: 11 },
+    mehendi: { x: 50, y: 76, w: 46 }, survani: { x: 29, y: 86, w: 24, h: 11 },
     mandva: { x: 46.5, y: 78.5, w: 25, h: 19, glow: true }, lagna: { x: 50, y: 87, w: 20 }
   }, D.ritualPos || {});
   const HAND = `<svg viewBox="0 0 48 48"><circle class="rip" cx="23" cy="9" r="7"/><path d="M20 23V9.5a3 3 0 0 1 6 0V20l8.4 1.7a4.6 4.6 0 0 1 3.6 5.3l-1.3 8a6.5 6.5 0 0 1-6.4 5.5h-8.4a6.5 6.5 0 0 1-5-2.4L10.6 31a3 3 0 0 1 4.4-4.1L20 31z"/></svg>`;
   const ghost = (k, x, y) => `<div class="hint-hand" data-k="${k}" style="left:${x}%;top:${y}%">${HAND}</div>`;
   const box = (p) => `left:${p.x - p.w / 2}%;top:${p.y - p.h / 2}%;width:${p.w}%;height:${p.h}%`;
   const RITUAL = {
-    mehendi: (p) => `<div class="pad" style="left:${p.x}%;top:${p.y}%;width:${p.w}%"><svg viewBox="0 0 200 200" aria-hidden="true"><path/></svg><canvas></canvas></div>${ghost("trace", p.x, p.y)}`,
+    mehendi: (p) => `<div class="rub" style="left:${p.x}%;top:${p.y}%;width:${p.w}%" aria-label="Rub the palms to apply mehendi">
+        <img class="rub-under" src="assets/img/palms-mehendi.webp" alt="" draggable="false" decoding="async">
+        <canvas class="rub-top"></canvas></div>${ghost("rub", p.x, p.y)}`,
     survani: (p) => `<button class="hit" style="${box(p)}" aria-label="Tap the tabla"></button>${ghost("tap", p.x, p.y)}`,
     mandva: (p) => (p.glow ? `<div class="aura" style="left:${p.x}%;top:${p.y}%;width:46%;aspect-ratio:1;transform:translate(-50%,-50%)"></div>
              <span class="flame" style="left:27%;top:80%"></span><span class="flame" style="left:72.6%;top:80%"></span>` :
@@ -364,11 +366,11 @@
     hint.addEventListener("click", () => {      // second tap on the hint skips the ritual
       if (++hintTaps >= 2) return finish(sc);
       gsap.fromTo(hint, { x: -6 }, { x: 0, duration: .5, ease: "elastic.out(1,.3)" });
-      const t = $(".hit, .pad, .hold", sc); if (t) gsap.fromTo(t, { scale: 1 }, { scale: 1.12, yoyo: true, repeat: 1, duration: .25 });
+      const t = $(".hit, .pad, .rub, .hold", sc); if (t) gsap.fromTo(t, { scale: 1 }, { scale: 1.12, yoyo: true, repeat: 1, duration: .25 });
     });
     $(".details-btn", sc).addEventListener("click", () => openSheet(id));
     art.addEventListener("pointerdown", (ev) => { if (ev.target.closest(".hit, .pad, .hold")) sc.classList.add("touched"); });
-    if (id === "mehendi") mehendi(sc, art);
+    if (id === "mehendi") rubPalms(sc, art);
     if (id === "survani") taps(sc, art, (n, x, y) => {
       S.tabla(n % 2 ? "dha" : "na");
       add({ x: x * dpr, y: y * dpr, r: 6 * dpr, c: "#fff", type: "ring" });
@@ -423,6 +425,48 @@
     btn.addEventListener("contextmenu", (e) => e.preventDefault());
   }
 
+  // Rub the palms: erase the plain-skin layer to reveal the mehendi. Only sideways rubbing is ours;
+  // up/down swipes belong to the page, so scrolling is never blocked.
+  function rubPalms(sc, art) {
+    const box = $(".rub", sc), can = $("canvas", box), g = can.getContext("2d");
+    const plain = new Image(); plain.decoding = "async"; plain.src = "assets/img/palms-plain.webp";
+    let total = 0, done = false, down = false, lastTick = 0, lastCheck = 0, ready = false;
+    const draw = () => {
+      const r = box.getBoundingClientRect(); if (!r.width) return;
+      can.width = Math.round(r.width * dpr); can.height = Math.round(r.height * dpr);
+      g.globalCompositeOperation = "source-over"; g.clearRect(0, 0, can.width, can.height);
+      g.drawImage(plain, 0, 0, can.width, can.height);
+      const px = g.getImageData(0, 0, can.width, can.height).data; total = 0;
+      for (let i = 3; i < px.length; i += 4 * 9) if (px[i] > 40) total++;
+      ready = true;
+    };
+    plain.onload = draw;
+    addEventListener("resize", () => { if (!done && ready && Math.abs(box.getBoundingClientRect().width * dpr - can.width) > 2) draw(); });
+    const erase = (e) => {
+      const r = can.getBoundingClientRect(), x = (e.clientX - r.left) * dpr, y = (e.clientY - r.top) * dpr, rad = can.width * 0.13;
+      const gr = g.createRadialGradient(x, y, 0, x, y, rad); gr.addColorStop(0, "rgba(0,0,0,1)"); gr.addColorStop(.6, "rgba(0,0,0,.85)"); gr.addColorStop(1, "rgba(0,0,0,0)");
+      g.globalCompositeOperation = "destination-out"; g.fillStyle = gr; g.beginPath(); g.arc(x, y, rad, 0, Math.PI * 2); g.fill();
+      const now = performance.now();
+      if (now - lastTick > 140) { lastTick = now; S.pop(); }
+      if (now - lastCheck > 250) { lastCheck = now; check(); }
+    };
+    const check = () => {
+      if (done || !total) return;
+      const px = g.getImageData(0, 0, can.width, can.height).data; let left = 0;
+      for (let i = 3; i < px.length; i += 4 * 9) if (px[i] > 40) left++;
+      if (1 - left / total > 0.58) complete();
+    };
+    const complete = () => {
+      done = true; down = false; box.classList.add("revealed");
+      const r = box.getBoundingClientRect();
+      burst(r.left + r.width / 2, r.top + r.height * .45, 70, PAL.mehendi.concat(PAL.gold), "petal", 7);
+      setTimeout(() => finish(sc), 650);
+    };
+    box.addEventListener("pointerdown", (e) => { if (done || !ready) return; down = true; sc.classList.add("touched"); S.unlock(); erase(e); });
+    box.addEventListener("pointermove", (e) => { if (down && !done) erase(e); });
+    ["pointerup", "pointerleave", "pointercancel"].forEach((ev) => box.addEventListener(ev, () => { down = false; check(); }));
+  }
+
   function mehendi(sc, art) {
     const pad = $(".pad", sc), path = $("path", pad), can = $("canvas", pad), g = can.getContext("2d");
     // lotus mandala: centre circle, 8 teardrop petals, outer ring
@@ -466,6 +510,7 @@
     pad.addEventListener("pointerdown", (e) => { if (sc.classList.contains("done")) return; drawing = true; pad.setPointerCapture(e.pointerId); S.unlock(); at(e); });
     pad.addEventListener("pointermove", (e) => drawing && at(e));
     pad.addEventListener("pointerup", () => (drawing = false));
+    pad.addEventListener("pointercancel", () => (drawing = false));   // the page took the swipe (vertical scroll)
   }
 
   // ---------- Details sheet ----------
@@ -545,6 +590,7 @@
   sc.addEventListener("pointerdown", (e) => { scratching = true; scratchTouched = true; sc.setPointerCapture(e.pointerId); S.unlock(); scratchAt(e); });
   sc.addEventListener("pointermove", (e) => { if (scratching) { scratchAt(e); checkScratch(); } });
   sc.addEventListener("pointerup", () => { scratching = false; checkScratch(); });
+  sc.addEventListener("pointercancel", () => { scratching = false; });
   function checkScratch() {
     if (scratched) return;
     const px = sx.getImageData(0, 0, sc.width, sc.height).data; let clear = 0, tot = 0;

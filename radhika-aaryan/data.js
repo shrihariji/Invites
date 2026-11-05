@@ -88,12 +88,12 @@ window.INVITE = {
   rsvp: { whatsapp: "", by: "" },
 
   /* Background music (files in assets/audio). Two tracks are kept:
-       "music-vocal.mp3"        - Gujarati folk fusion with sung hook (Radhika-Aaryan)
+       "music-vocal-v2.mp3"        - Gujarati folk fusion with sung hook (Radhika-Aaryan)
        "music-instrumental.mp3" - same feel, no singing
      Write the one to play below, or "" for no music. */
-  music: "music-vocal.mp3",
+  music: "music-vocal-v2.mp3",
   // A link can pick the track: add ?music=vocal or ?music=instrumental to the address
-  musicOptions: { vocal: "music-vocal.mp3", instrumental: "music-instrumental.mp3" },
+  musicOptions: { vocal: "music-vocal-v2.mp3", instrumental: "music-instrumental.mp3" },
 
   defaultGuest: "Family & Friends",
 
