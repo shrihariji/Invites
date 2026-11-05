@@ -36,6 +36,7 @@
       if (name) guest = name;
       if (evs) only = evs.split(",").map((s) => s.trim()).filter(Boolean);
     } else if (q.get("to")) guest = q.get("to");
+    if (q.get("ev")) only = q.get("ev").split(",").map((x) => x.trim()).filter(Boolean);   // readable links: &ev=mandva,lagna
   } catch (e) { /* bad link - keep the default greeting */ }
   let events = D.events.filter((e) => !only || only.includes(e.id));
   const guestName = () => guest || D.defaultGuest;
