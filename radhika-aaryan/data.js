@@ -82,7 +82,7 @@ window.INVITE = {
   blessingsNote: "Blessings Only",
 
   photosTitle: "Our Moments",
-  photos: ["m02", "m03", "m04", "m05", "m06", "m07", "m08", "m09", "m10"],   // files in assets/photos (.webp)
+  photos: ["m02", "m03", "m11", "m04", "m05", "m06", "m12", "m08", "m10"],   // files in assets/photos (.webp)
 
   // RSVP on WhatsApp. Leave whatsapp empty "" to hide the RSVP section.
   rsvp: { whatsapp: "", by: "" },
