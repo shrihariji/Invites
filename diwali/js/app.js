@@ -4,7 +4,7 @@
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-  const STUDIO = "HariKrishna AI Studios";
+  const STUDIO = "Chaitanya Patel & Family";   // sender shown on the main link (no ?w=)
   const PHONE = "919408877393";
   const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
