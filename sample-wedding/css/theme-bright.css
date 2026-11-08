@@ -1,0 +1,121 @@
+/* SAMPLE - bright festive daylight theme over the v2 one-shot engine.
+   Rani pink + marigold + turquoise, white frosted glass, deep berry text. */
+.bright { --rani: #e0306e; --rani-d: #a3124a; --mari: #ff9f1c; --teal: #0f9d9a; --berry: #5b0f2e; --cream: #fffaf2;
+  --gold-g: linear-gradient(180deg, #ff6aa0 0%, #e0306e 55%, #b0124f 100%); }
+
+/* ---------- world ---------- */
+body.bright { background: #ffe9f0 url("../assets/img/palace.webp") center / cover fixed; }
+.bright #world { background: #ffe9f0; }
+.bright #world .palace { filter: brightness(1.28) saturate(1.25) contrast(.92); }
+.bright #world .wash { mix-blend-mode: normal; }
+.bright #world .moonglow { background: radial-gradient(ellipse at 50% 6%, #fff7d6cc, transparent 50%), radial-gradient(ellipse at 50% 110%, #ffffff80, transparent 60%); }
+
+/* ---------- opener ---------- */
+.bright #curtain { background: radial-gradient(ellipse at 50% 30%, #ffd36b, #ff7aa8 55%, #e0306e); }
+.bright #curtain::before { opacity: .45; background: radial-gradient(circle, #fff 1px, transparent 1.6px) 0 0 / 34px 34px, radial-gradient(circle, #fff8 .8px, transparent 1.4px) 17px 17px / 34px 34px; }
+.bright .c-dear { color: #fff; text-shadow: 0 2px 10px #a3124a88; }
+.bright .c-gu, .bright .c-sub { color: #fff; text-shadow: 0 2px 8px #a3124a99; }
+.bright .seal-hint { color: var(--rani-d); background: #fffaf2ee; border: 1px solid #ffffff; box-shadow: 0 6px 18px #a3124a40; }
+.bright .env-back { border-image: repeating-linear-gradient(45deg, #e0306e 0 9px, #fffaf0 9px 18px, #0f9d9a 18px 27px, #fffaf0 27px 36px) 8; }
+.bright .l-names { color: var(--rani-d); }
+
+/* ---------- soft white halos behind any text that sits on the world ---------- */
+.bright .glow::before, .bright .p1 .glow::before { background: radial-gradient(closest-side, #fffaf2e6, #fffaf2a0 60%, transparent); }
+.bright .band::before { background: radial-gradient(closest-side, #fffaf2e0, #fffaf290 65%, transparent); }
+
+.bright .shlokas { color: var(--rani-d); }
+.bright .names, .bright .names .amp { color: var(--rani); filter: drop-shadow(0 2px 0 #fff) drop-shadow(0 4px 10px #ffffffaa); }
+.bright .range { color: var(--berry); font-weight: 600; } .bright .city { color: var(--teal); }
+.bright .dear { color: var(--rani-d); }
+.bright .invite-lines p { color: var(--berry); }
+.bright .dr { color: var(--rani); } .bright .par { color: var(--berry); } .bright .amp2 { color: var(--mari); }
+
+.bright .title { color: var(--rani); text-shadow: 0 2px 0 #fff, 0 0 18px #fff; }
+.bright .gu-sub { color: var(--teal); text-shadow: 0 1px 0 #fff, 0 0 10px #fff; }
+.bright .note { color: var(--berry); text-shadow: 0 0 8px #fff, 0 0 2px #fff; }
+
+/* ---------- white frosted glass cards ---------- */
+.bright .glassy, .bright .countdown div, .bright #glanceList a, .bright .fam-card, .bright #rsvpForm, .bright .journey .homes > div, .bright .medal {
+  background: linear-gradient(160deg, #ffffffd9, #fff6fab8) !important; border: 1px solid #ffffff !important;
+  box-shadow: 0 10px 30px #a3124a26, inset 0 1px 0 #fff !important; }
+.bright .countdown b { color: var(--rani); } .bright .countdown span { color: var(--berry); }
+.bright #glanceList a { color: var(--berry); } .bright #glanceList .gt { color: var(--berry); }
+.bright #glanceList .gd { color: var(--rani); border-color: #f3b6cc; } .bright #glanceList .arrow { color: var(--rani); }
+.bright .btn { background: linear-gradient(180deg, #ff5a8a, #e0306e); color: #fff; box-shadow: 0 6px 16px #e0306e55; }
+.bright .btn.ghost { background: #ffffffcc; color: var(--rani-d); border-color: var(--rani); box-shadow: none; }
+.bright .medal { box-shadow: 0 0 0 6px #ffffff90, 0 0 0 8px #ff9f1c, 0 14px 34px #a3124a40 !important; }
+.bright .medal .m-day { color: var(--rani); } .bright .medal .m-mon { color: var(--berry); } .bright .medal .m-line { color: var(--teal); }
+.bright .homes b { color: var(--rani); } .bright .homes span { color: var(--berry); } .bright .homes small { color: var(--berry); }
+.bright .journey .land { fill: #ffffffb0; stroke: #e0306e; } .bright #flight { stroke: var(--teal); } .bright #trail { stroke: var(--mari); }
+.bright .journey .pin { fill: var(--rani); stroke: #fff; } .bright #plane { fill: var(--teal); }
+.bright .journey .mapname { fill: var(--rani-d); }
+.bright .fam h3 { color: var(--rani); } .bright .fam h3::after { background: var(--mari); } .bright .fam li { color: var(--berry); }
+.bright .fam-group, .bright .bless-only { color: var(--teal); }
+.bright .credit { color: var(--berry); opacity: .8; }
+.bright .credit a { color: var(--rani-d); }
+.bright .choice span, .bright .count select, .bright #rsvpForm textarea { background: #fff; color: var(--berry); border-color: #f3b6cc; }
+.bright .count { color: var(--berry); }
+
+/* ---------- event scenes ---------- */
+.bright .scene { --c: var(--rani); --c2: var(--teal); }
+.bright .band .wk { color: var(--berry); }
+.bright .ritual-hint { background: linear-gradient(180deg, #ff5a8a, #e0306e); color: #fff; border: 1px solid #fff; }
+.bright .details-btn { background: #ffffffd0; color: var(--rani-d); border-color: var(--rani); }
+.bright .sheet-card { --c: #e0306e; --c2: #0f9d9a; background: #fffaf2; }
+
+/* ---------- language switch ---------- */
+.bright #lang { background: #ffffffd9; box-shadow: 0 4px 14px #a3124a30; }
+.bright #lang button { color: var(--berry); } .bright #lang button.on { background: var(--rani); color: #fff; }
+
+/* ---------- SAMPLE badge ---------- */
+.sample-badge { position: fixed; z-index: 68; top: 12px; left: max(12px, calc(50vw - 240px + 12px)); padding: 7px 12px; border-radius: 20px;
+  font: 700 10.5px "Marcellus", "Rasa", sans-serif; letter-spacing: .08em; color: #fff; text-decoration: none;
+  background: linear-gradient(180deg, #19b3ae, #0f8f8b); box-shadow: 0 4px 14px #0f9d9a55; }
+body.locked .sample-badge { z-index: 120; }
+
+/* ---------- studio card (marketing, prominent) ---------- */
+.studio-card { position: relative; z-index: 1; margin: 30px 16px 90px; padding: 30px 20px 28px; border-radius: 28px; text-align: center;
+  background: linear-gradient(165deg, #ffffff, #fff1f6 60%, #fff6e0); border: 2px solid #ffffff;
+  box-shadow: 0 0 0 3px #ff9f1c, 0 20px 50px #a3124a40; }
+.st-eyebrow { font: 600 15px "Cormorant Garamond", "Rasa", serif; font-style: italic; color: var(--teal); }
+.st-brand { margin-top: 4px; font: 400 34px/1.05 "Marcellus SC", "Rasa", serif; color: var(--rani); letter-spacing: .02em; }
+.st-brand span { display: block; font-size: 21px; letter-spacing: .3em; color: var(--mari); margin-top: 4px; }
+.st-tag { margin: 12px auto 0; max-width: 300px; font: 17px/1.35 "Cormorant Garamond", "Rasa", serif; color: var(--berry); }
+.st-occ { list-style: none; margin: 16px 0 6px; display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; }
+.st-occ li { padding: 6px 11px; border-radius: 16px; background: #fff; border: 1px solid #f3b6cc; font: 14px "Marcellus", "Rasa", serif; color: var(--berry); }
+.st-person { margin-top: 18px; font: 600 20px "Cormorant Garamond", "Rasa", serif; color: var(--berry); }
+.st-phone { display: block; font: 400 38px "Marcellus", serif; letter-spacing: .04em; color: var(--rani-d); text-decoration: none; }
+.st-cta { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
+.st-cta .btn { text-decoration: none; }
+.bright .st-wa { background: linear-gradient(180deg, #2bd46b, #1aa84f); box-shadow: 0 6px 16px #1aa84f55; }
+
+/* ---------- "Can be personalised" notes (sample only) ---------- */
+.pnote { position: relative; z-index: 3; margin: 14px auto 0; max-width: 340px; padding: 10px 14px 10px 14px; border-radius: 14px; text-align: left;
+  font: 500 15px/1.4 "Mukta", "Mukta Vaani", "Tiro Devanagari Hindi", sans-serif; color: #063c3b;
+  background: linear-gradient(160deg, #e6fffb, #c8f4ee); border: 1.5px dashed #0f9d9a; box-shadow: 0 6px 18px #0f9d9a33; }
+.pnote b { display: block; font-weight: 700; font-size: 13px; letter-spacing: .04em; color: #0b7f7c; margin-bottom: 2px; }
+.lang-gu .pnote { font-family: "Mukta Vaani", "Mukta", sans-serif; }
+.pnote.on-curtain { max-width: 320px; margin-top: 2svh; }
+.hero-page.p1 { position: relative; }
+.pnote.pnote-float { position: absolute; left: 50%; bottom: 3svh; width: min(88%, 330px); transform: translateX(-50%); margin: 0;
+  animation: noteBob 3s ease-in-out infinite; }
+@keyframes noteBob { 50% { translate: 0 -5px; } }
+.st-lang { margin-top: 12px; font: 600 15px "Mukta", "Mukta Vaani", "Tiro Devanagari Hindi", sans-serif; color: #0b7f7c; }
+
+/* ---------- Hindi: Devanagari fonts everywhere ---------- */
+.lang-hi .names, .lang-hi .title, .lang-hi .dr, .lang-hi .par, .lang-hi .invite-lines p, .lang-hi .range, .lang-hi .city, .lang-hi .dear,
+.lang-hi .note, .lang-hi .gu-sub, .lang-hi .band, .lang-hi .band *, .lang-hi .fam *, .lang-hi .homes *, .lang-hi #glanceList *, .lang-hi .sheet-card *,
+.lang-hi .countdown span, .lang-hi .medal *, .lang-hi .btn, .lang-hi .ritual-hint, .lang-hi .ritual-hint *, .lang-hi .seal-hint, .lang-hi .c-dear, .lang-hi .c-sub,
+.lang-hi .st-tag, .lang-hi .st-occ li, .lang-hi .st-eyebrow, .lang-hi #rsvpForm *, .lang-hi .bless-only, .lang-hi .l-names, .lang-hi .l-date, .lang-hi .credit {
+  font-family: "Tiro Devanagari Hindi", "Mukta", serif !important; }
+.lang-hi .p1 .names .n1, .lang-hi .p1 .names .n2 { font-size: min(calc(var(--u) * 10.5), 5.8svh); }
+
+/* ---------- Shubh Lagna: real rose (Google Vids, keyed) instead of the drawn flower ---------- */
+.bright .hold { width: 30%; overflow: visible; }
+.bright .hold svg { display: none; }
+.bright .hold .rose { position: absolute; inset: -18%; width: 136%; height: 136%; object-fit: contain; pointer-events: none;
+  transform: scale(calc(1 + var(--p, 0) * .18)) rotate(calc(var(--p, 0) * 25deg)); filter: drop-shadow(0 8px 16px #a3124a66); transition: transform .1s linear; }
+.bright .hold .ring { position: absolute; inset: -10%; border-radius: 50%; pointer-events: none;
+  background: conic-gradient(#ff5a8a calc(var(--p, 0) * 360deg), #ffffff55 0); -webkit-mask: radial-gradient(closest-side, transparent 88%, #000 90%); mask: radial-gradient(closest-side, transparent 88%, #000 90%); }
+.bright .scene:not(.done) .hold .rose { animation: roseBreath 2.4s ease-in-out infinite; }
+@keyframes roseBreath { 50% { filter: drop-shadow(0 8px 16px #a3124a66) drop-shadow(0 0 18px #ffd0e0); } }

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Aarav &amp; Meera - Wedding Invitation · Sample by HariKrishna AI Studios</title>
+  <meta name="theme-color" content="#ff5a8a">
+  <meta name="description" content="Sample interactive wedding invitation by HariKrishna AI Studios · 94088 77393">
+  <!-- WhatsApp / social link preview. og:image must be the full public address. -->
+  <meta property="og:title" content="You are invited · Aarav &amp; Meera (sample invite)">
+  <meta property="og:description" content="An interactive digital wedding invitation by HariKrishna AI Studios. Tap to open.">
+  <meta property="og:image" content="https://shrihariji.github.io/Invites/sample-wedding/assets/img/og-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Pinyon+Script&family=Tiro+Devanagari+Hindi&family=Rasa:wght@400;500;600;700&family=Mukta:wght@500;600;700&family=Mukta+Vaani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/palace.webp">
+  <link rel="preload" as="image" href="assets/img/couple.webp">
+  <link rel="preload" as="image" href="assets/img/seal.webp">
+  <link rel="prefetch" href="assets/img/palms-plain.webp">
+  <link rel="prefetch" href="assets/img/palms-mehendi.webp">
+  <link rel="stylesheet" href="css/style.css?v=22">
+  <link rel="stylesheet" href="css/theme-v2.css?v=9">
+  <link rel="stylesheet" href="css/theme-bright.css?v=3">
+</head>
+<body class="locked v2 bright" data-opener="envelope">
+  <a class="sample-badge" href="#studio">SAMPLE · HariKrishna AI Studios</a>
+  <div id="lang" role="group" aria-label="Language"><button data-l="en">EN</button><button data-l="gu">ગુજ</button><button data-l="hi">हिं</button></div>
+  <canvas id="fx" aria-hidden="true"></canvas>
+
+  <!-- ===== Opening: silk curtains + wax seal ===== -->
+  <div id="curtain" class="env-wrap">
+    <div class="curtain-ui">
+      <img class="c-om" src="assets/img/om-ganesh.webp" alt="">
+      <p class="c-dear"><span data-t="dear"></span> <span data-guest></span>,</p>
+      <p class="c-gu">આપને સહ પરિવાર પધારવા<br>ભાવભર્યું નિમંત્રણ</p>
+      <p class="c-sub" data-th="cSub"></p>
+      <p class="pnote "><b data-t="pn_tag"></b> <span data-t="pn_guest"></span></p>
+    </div>
+    <div class="envelope">
+      <div class="env-back"></div>
+      <div class="letter">
+        <img src="assets/img/ganesh-mini.webp" alt="">
+        <p class="l-names"><span data-field="bride.first"></span> <i>&amp;</i> <span data-field="groom.first"></span></p>
+        <p class="l-date" data-field="dateRange"></p>
+      </div>
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <div class="airmail" aria-hidden="true">PAR AVION · AIR MAIL</div>
+      <div class="stamp in" aria-hidden="true"><b>🪷</b><span>भारत INDIA</span><em>₹ 25</em></div>
+      <div class="stamp us" aria-hidden="true"><b>🗽</b><span>USA</span><em>FOREVER</em></div>
+      <svg class="postmark" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><path id="pm" d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"/></defs>
+        <circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="27"/>
+        <text><textPath href="#pm">AHMEDABAD · GUJARAT · INDIA ·</textPath></text>
+        <text x="50" y="47" text-anchor="middle" class="pm-d">12 FEB</text><text x="50" y="60" text-anchor="middle" class="pm-d">2027</text>
+      </svg>
+      <button id="seal" aria-label="Tap the seal to open the invitation"><img src="assets/img/seal.webp" alt=""></button>
+    </div>
+    <p class="seal-hint"><b data-t="sealHint"></b> <span data-t="soundOn"></span></p>
+    <p class="pnote on-curtain"><b data-t="pn_tag"></b> <span data-t="pn_song"></span></p>
+  </div>
+  <div id="flash" aria-hidden="true"></div>
+
+  <!-- One continuous royal world behind everything (no section cuts) -->
+  <div id="world" aria-hidden="true">
+    <img class="palace" src="assets/img/palace.webp" alt="">
+    <div class="wash"></div>
+    <div class="moonglow"></div>
+    <img class="toran" src="assets/img/toran.webp" alt="">
+  </div>
+
+  <main id="app">
+    <!-- ===== Hero: temple arch (two screens over one painting) ===== -->
+    <section class="hero" id="top">
+      <div class="stick"><div class="cover"><div class="art"><img src="assets/img/hero.webp" alt=""></div></div></div>
+      <div class="hero-page p1">
+        <div class="glow">
+          <div class="shlokas" id="shlokas"></div>
+          <div class="om-wrap"><img class="om" src="assets/img/om-ganesh.webp" alt="Shri Ganesh"></div>
+          <h1 class="names">
+            <span class="n1" data-field="bride.first"></span>
+            <span class="amp">&amp;</span>
+            <span class="n2" data-field="groom.first"></span>
+          </h1>
+          <p class="range" data-field="dateRange"></p>
+          <p class="city" data-field="cityLine"></p>
+        </div>
+        <img class="hero-couple" src="assets/img/couple.webp" alt="Aarav and Meera">
+        <p class="pnote pnote-float"><b data-t="pn_tag"></b> <span data-t="pn_avatar"></span></p>
+      </div>
+      <div class="hero-page p2">
+        <div class="glow">
+          <img class="g-mini reveal" src="assets/img/ganesh-mini.webp" alt="">
+          <p class="dear reveal"><span data-t="dear"></span> <span data-guest></span>,</p>
+          <div class="invite-lines" id="inviteLines"></div>
+          <h2 class="dr reveal" data-field="bride.full"></h2>
+          <p class="par reveal" data-field="bride.parents"></p>
+          <p class="amp2 reveal">&amp;</p>
+          <h2 class="dr reveal" data-field="groom.full"></h2>
+          <p class="par reveal" data-field="groom.parents"></p>
+          <p class="pnote reveal"><b data-t="pn_tag"></b> <span data-t="pn_card"></span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Coming home to celebrate (plane flies on scroll) ===== -->
+    <section class="paper journey" id="journey">
+      <h2 class="title reveal" data-t="jTitle"></h2>
+      <p class="gu-sub reveal" data-t="jSub"></p>
+      <svg class="map" viewBox="0 0 320 210" aria-hidden="true">
+        <path class="land usa" d="M6.0,98.3 L9.8,96.7 L71.4,96.7 L72.3,95.5 L83.9,99.4 L94.5,103.3 L99.6,106.9 L99.8,113.2 L98.3,116.0 L107.4,113.8 L113.6,111.9 L116.3,108.0 L124.0,107.7 L127.3,103.0 L129.1,101.1 L132.2,101.9 L134.0,108.3 L126.9,111.6 L126.0,114.3 L127.3,116.8 L123.1,117.9 L118.7,119.9 L118.5,123.7 L115.1,125.7 L114.0,130.1 L115.1,134.8 L109.8,138.4 L106.9,140.6 L102.9,145.0 L102.1,148.6 L104.9,158.0 L104.3,162.5 L101.2,160.5 L98.9,155.0 L99.2,151.9 L95.6,149.2 L90.7,148.1 L86.3,148.1 L83.9,148.6 L84.3,151.4 L80.8,151.4 L74.5,150.0 L71.9,151.1 L67.0,155.5 L66.6,160.2 L62.6,158.9 L60.1,153.9 L57.7,149.7 L54.1,151.9 L50.8,150.3 L46.4,144.2 L42.6,145.6 L36.2,145.6 L28.0,142.3 L22.9,142.3 L19.8,138.1 L15.1,136.5 L12.2,130.9 L10.9,128.4 L8.0,122.1 L6.7,116.0 L7.6,104.4 Z"/>
+        <path class="land india" d="M229.1,66.7 L232.1,66.3 L235.0,67.5 L238.4,70.4 L241.0,72.5 L244.0,71.2 L247.7,70.8 L250.3,73.3 L250.7,77.4 L248.8,81.1 L247.0,84.8 L244.7,86.9 L244.0,90.2 L246.2,91.4 L249.9,93.5 L253.3,95.5 L249.2,100.5 L256.6,105.4 L261.5,106.2 L269.7,109.1 L279.0,110.4 L279.7,104.2 L282.0,103.4 L282.3,106.7 L285.7,108.7 L293.9,108.5 L292.8,104.6 L296.1,104.2 L300.6,100.9 L306.2,99.2 L309.2,98.0 L311.4,100.5 L314.0,102.5 L312.9,105.4 L309.5,107.1 L305.8,111.2 L303.6,116.9 L299.1,120.6 L296.1,127.6 L294.3,121.9 L291.3,121.1 L292.4,116.5 L287.9,115.3 L286.1,114.9 L283.1,112.0 L281.2,115.3 L281.6,119.0 L282.7,128.1 L279.7,130.1 L274.9,131.4 L270.1,136.3 L266.3,140.4 L262.6,144.9 L257.8,150.3 L253.7,153.2 L250.3,154.8 L249.9,164.7 L248.8,170.5 L247.7,176.2 L245.1,180.3 L242.5,182.4 L239.9,185.7 L237.7,183.6 L235.4,178.7 L233.6,172.5 L231.3,168.0 L229.5,163.1 L227.2,157.7 L225.0,152.3 L223.1,144.9 L222.4,138.4 L222.8,133.4 L221.6,130.1 L220.5,127.2 L217.2,132.6 L215.3,133.4 L211.6,130.1 L208.6,126.8 L206.0,121.9 L210.5,119.0 L215.7,117.8 L213.4,113.6 L210.1,109.1 L214.2,103.8 L219.4,99.7 L224.6,95.9 L229.1,91.0 L229.5,84.8 L227.2,83.6 L225.4,80.7 L224.6,77.4 L225.4,75.0 L222.4,72.5 L221.3,70.0 L223.9,67.5 Z"/>
+        <text class="mapname" x="70" y="185" text-anchor="middle">U S A</text>
+        <text class="mapname" x="262" y="200" text-anchor="middle">I N D I A</text>
+        <path id="flight" d="M69.7,125.7 Q145.6,32.3 221.5,124.3"/>
+        <path id="trail" d="M69.7,125.7 Q145.6,32.3 221.5,124.3"/>
+        <circle class="pin" cx="69.7" cy="125.7" r="4.5"/><circle class="pin" cx="221.5" cy="124.3" r="4.5"/>
+        <g transform="translate(-30.5 20.3)"><g class="heart"><path d="M252,96c-4-6-14-4-12 4 1 5 12 11 12 11s11-6 12-11c2-8-8-10-12-4z"/></g></g>
+        <g id="plane"><path d="M-9,-2 L6,-2 L10,0 L6,2 L-9,2 Z M-2,-2 L-6,-9 L-3,-9 L3,-2 Z M-2,2 L-6,9 L-3,9 L3,2 Z M-9,-1 L-12,-5 L-10,-5 L-7,-1 Z M-9,1 L-12,5 L-10,5 L-7,1 Z"/></g>
+      </svg>
+      <div class="homes">
+        <div class="reveal"><b data-t="jUsa"></b><span><span data-field="bride.first"></span> &amp; <span data-field="groom.first"></span></span><small data-t="jUsaNote"></small></div>
+        <div class="reveal"><b data-t="jAmd"></b><span data-field="dateRange"></span><small data-t="jAmdNote"></small></div>
+      </div>
+      <p class="note reveal" data-t="jNote"></p>
+      <p class="pnote reveal"><b data-t="pn_tag"></b> <span data-t="pn_journey"></span></p>
+    </section>
+
+    <!-- ===== Save the date: scratch + countdown ===== -->
+    <section class="paper save">
+      <h2 class="title reveal" data-t="saveTitle"></h2>
+      <p class="gu-sub reveal" data-t="saveSub"></p>
+      <p class="note reveal" data-t="scratchNote"></p>
+      <div class="medal reveal">
+        <div class="medal-in">
+          <span class="m-day" data-field="dateReveal.day"></span>
+          <span class="m-mon"><span data-field="dateReveal.month"></span> · <span data-field="dateReveal.year"></span></span>
+          <span class="m-line" data-field="dateReveal.line"></span>
+        </div>
+        <canvas id="scratch" aria-label="Scratch area"></canvas>
+      </div>
+      <div class="countdown reveal" id="countdown">
+        <div><b data-cd="d">0</b><span data-t="days"></span></div>
+        <div><b data-cd="h">0</b><span data-t="hours"></span></div>
+        <div><b data-cd="m">0</b><span data-t="mins"></span></div>
+        <div><b data-cd="s">0</b><span data-t="secs"></span></div>
+      </div>
+      <button class="btn ghost reveal" id="calAll" data-t="calAll"></button>
+    </section>
+
+    <!-- ===== At a glance ===== -->
+    <section class="paper glance">
+      <h2 class="title reveal" data-t="celebTitle"></h2>
+      <p class="gu-sub reveal" data-t="celebSub"></p>
+      <p class="note reveal" data-t="tapDay"></p>
+      <ol id="glanceList"></ol>
+      <p class="pnote reveal"><b data-t="pn_tag"></b> <span data-t="pn_ritual"></span></p>
+    </section>
+
+    <!-- ===== Event worlds (built from data.js) ===== -->
+    <div id="scenes"></div>
+
+    <!-- ===== Photos ===== -->
+    <section class="paper moments">
+      <h2 class="title reveal" data-field="photosTitle"></h2>
+      <p class="note reveal" data-t="photosNote"></p>
+      <div class="reel" id="reel"></div>
+      <div class="dots" id="dots"></div>
+      <p class="pnote reveal"><b data-t="pn_tag"></b> <span data-t="pn_photos"></span></p>
+    </section>
+
+    <!-- ===== Family ===== -->
+    <section class="family">
+      <div class="cover"><div class="art"><img src="assets/img/hero.webp" alt="" loading="lazy"></div></div>
+      <div class="fam-card">
+        <div id="famList"></div>
+        <p class="fam-group reveal" data-field="familyGroup"></p>
+        <img class="logo reveal" id="logo" src="data:," alt="" loading="lazy">
+        <p class="bless-only reveal" data-field="blessingsNote"></p>
+        <p class="credit"><a id="creditWa" target="_blank" rel="noopener"><span data-t="madeBy"></span> <span data-field="credit.name"></span></a>
+          · <a id="creditTel"></a></p>
+      </div>
+    </section>
+
+    <!-- ===== RSVP (hidden when no WhatsApp number in data.js) ===== -->
+    <section class="paper rsvp" id="rsvp" hidden>
+      <h2 class="title reveal" data-t="rsvpTitle"></h2>
+      <p class="note reveal" id="rsvpBy"></p>
+      <form id="rsvpForm" class="reveal" onsubmit="return false">
+        <div class="choice">
+          <label><input type="radio" name="att" value="yes" checked><span data-t="attYes"></span></label>
+          <label><input type="radio" name="att" value="no"><span data-t="attNo"></span></label>
+        </div>
+        <label class="count"><span data-t="guests"></span>
+          <select name="count"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select>
+        </label>
+        <textarea name="msg" rows="3" data-tp="msgPh"></textarea>
+        <button class="btn" id="rsvpBtn" type="button" data-t="sendWa"></button>
+      </form>
+      <p class="pnote reveal"><b data-t="pn_tag"></b> <span data-t="pn_rsvp"></span></p>
+    </section>
+
+    <!-- ===== Studio card (marketing) ===== -->
+    <section class="studio-card" id="studio">
+      <p class="st-eyebrow" data-t="stEyebrow"></p>
+      <h2 class="st-brand">HariKrishna <span>AI Studios</span></h2>
+      <p class="st-tag" data-t="stTag"></p>
+      <ul class="st-occ"><li>💍 <span data-t="oc1"></span></li><li>💝 <span data-t="oc2"></span></li><li>🎂 <span data-t="oc3"></span></li><li>🏡 <span data-t="oc4"></span></li><li>🪔 <span data-t="oc5"></span></li><li>✨ <span data-t="oc6"></span></li></ul>
+      <p class="st-person">Chaitanya</p>
+      <a class="st-phone" href="tel:+919408877393">94088 77393</a>
+      <p class="st-lang" data-t="pn_lang"></p>
+      <div class="st-cta"><a class="btn st-wa" id="stWa" target="_blank" rel="noopener" data-t="stWa"></a><a class="btn ghost" href="tel:+919408877393" data-t="stCall"></a></div>
+    </section>
+
+  </main>
+
+  <!-- ===== Event details sheet ===== -->
+  <div id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden>
+    <div class="sheet-bg"></div>
+    <div class="sheet-card">
+      <button class="sheet-x" aria-label="Close">×</button>
+      <div id="sheetBody"></div>
+    </div>
+  </div>
+
+  <!-- ===== Photo viewer ===== -->
+  <div id="viewer" hidden><img alt=""><button aria-label="Close">×</button></div>
+
+  <button id="sound" aria-label="Sound off" hidden>
+    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2a1 1 0 0 1 1 1v.6a6.5 6.5 0 0 1 5.5 6.4v4.4l1.7 2.6a.6.6 0 0 1-.5.9H4.3a.6.6 0 0 1-.5-.9l1.7-2.6V10a6.5 6.5 0 0 1 5.5-6.4V3a1 1 0 0 1 1-1zm-2.4 17h4.8a2.4 2.4 0 0 1-4.8 0z"/></svg>
+  </button>
+  <audio id="bgm" loop preload="none"></audio>
+
+  <!-- ===== Swipe-up hint (like Reels) ===== -->
+  <div id="swipe" aria-hidden="true">
+    <div class="sw-arrows"><i></i><i></i><i></i></div>
+    <svg class="sw-hand" viewBox="0 0 48 48"><circle class="sw-tap" cx="23" cy="9" r="7"/>
+      <path d="M20 23V9.5a3 3 0 0 1 6 0V20l8.4 1.7a4.6 4.6 0 0 1 3.6 5.3l-1.3 8a6.5 6.5 0 0 1-6.4 5.5h-8.4a6.5 6.5 0 0 1-5-2.4L10.6 31a3 3 0 0 1 4.4-4.1L20 31z"/></svg>
+    <p data-t="swipe"></p>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="data.js?v=28"></script>
+  <script src="js/i18n.js?v=26"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/app.js?v=26"></script>
+  <script src="js/world.js?v=5"></script>
+</body>
+</html>

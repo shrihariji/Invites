@@ -1,0 +1,173 @@
+/* Version 2 - "Coming Home to Celebrate": royal night palette (maroon, gold, navy) over the shared engine styles */
+.v2 { --navy: #13204a; --gold-g: linear-gradient(180deg, #fff7dc 10%, #f1d68b 50%, #d4a94c 90%); }
+
+/* ---------- Envelope opener ---------- */
+.v2 #curtain { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.4svh;
+  background: radial-gradient(ellipse at 50% 35%, #8a1726, #3d0710 62%, #1e0408); }
+.v2 #curtain::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55;
+  background: radial-gradient(circle, #f1d68b 1px, transparent 1.6px) 0 0 / 34px 34px, radial-gradient(circle, #f1d68b88 .8px, transparent 1.4px) 17px 17px / 34px 34px; }
+.v2 .curtain-ui { position: relative; inset: auto; padding: 0 8%; gap: 1svh; }
+.v2 .curtain-ui::before { display: none; }
+.v2 .c-om { width: min(calc(var(--u) * 12), 8svh); filter: drop-shadow(0 2px 6px #0008); }
+.v2 .c-dear { color: #f1d68b; text-shadow: 0 2px 10px #000a; }
+.v2 .c-gu { color: #fff1d6; text-shadow: 0 2px 8px #0009; }
+.v2 .c-sub { color: #f7ead0; text-shadow: 0 2px 8px #0009; }
+.envelope { position: relative; width: min(84%, 400px); aspect-ratio: 1.5; perspective: 1000px; }
+.env-back { position: absolute; inset: 0; border-radius: 10px; background: #f4ead6;
+  border: 8px solid transparent; border-image: repeating-linear-gradient(45deg, #b3122e 0 9px, #fffaf0 9px 18px, #1c2e6b 18px 27px, #fffaf0 27px 36px) 8;
+  box-shadow: 0 24px 50px #0008; }
+.letter { position: absolute; left: 7%; right: 7%; top: 9%; height: 82%; z-index: 1; padding: 6% 6%; text-align: center; border-radius: 6px;
+  background: linear-gradient(180deg, #fffdf6, #f6ecd8); box-shadow: inset 0 0 0 2px #c9a24a, inset 0 0 0 5px #fffaf0, inset 0 0 0 6px #c9a24a88;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.letter img { width: 15%; filter: sepia(1) saturate(3) hue-rotate(-20deg) brightness(.6); }
+.l-names { font-family: "Pinyon Script", "Rasa", cursive; font-size: calc(var(--u) * 7.4); color: var(--maroon); line-height: 1.1; white-space: nowrap; }
+.l-names i { font-style: normal; color: var(--gold); }
+.l-date { font: 13px "Marcellus", "Rasa", serif; color: var(--olive); letter-spacing: .04em; }
+.env-front { position: absolute; inset: 8px; z-index: 2; border-radius: 10px; background: linear-gradient(180deg, #f2e5cb, #f8f0e0);
+  clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%); box-shadow: inset 0 -2px 0 #d9c49a; }
+.env-flap { position: absolute; left: 0; right: 0; top: 0; height: 62%; z-index: 3; transform-origin: top center;
+  background: linear-gradient(180deg, #e9d9b8, #f1e4c8); clip-path: polygon(0 0, 100% 0, 50% 100%); filter: drop-shadow(0 4px 4px #0003); }
+.v2 #seal { position: absolute; z-index: 5; left: 50%; top: 62%; width: 34%; margin: 0; translate: -50% -50%; }
+.airmail { position: absolute; z-index: 4; left: 7%; bottom: 8%; font: 600 10px "Marcellus SC", serif; letter-spacing: .16em; color: #1c2e6b;
+  padding: 3px 8px; border: 1.5px solid #1c2e6b; border-radius: 3px; transform: rotate(-3deg); background: #fffaf0cc; }
+.stamp { position: absolute; z-index: 4; width: 16%; aspect-ratio: .82; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-radius: 2px; outline: 3px dotted #fffaf0; outline-offset: -1px; box-shadow: 0 2px 6px #0004; color: #fffaf0; text-align: center; line-height: 1.05; }
+.stamp b { font-size: calc(var(--u) * 5); line-height: 1.1; }
+.stamp span { font: 600 7px "Marcellus SC", "Tiro Devanagari Hindi", serif; letter-spacing: .04em; }
+.stamp em { font: 700 8px "Marcellus", serif; font-style: normal; }
+.stamp.in { right: 6%; top: 66%; background: linear-gradient(160deg, #e07a2e, #b3122e); transform: rotate(5deg); }
+.stamp.us { right: 22%; top: 70%; background: linear-gradient(160deg, #2e4a9b, #13204a); transform: rotate(-6deg); }
+.postmark { position: absolute; z-index: 4; right: 2%; top: 56%; width: 26%; fill: none; stroke: #1c2e6b88; stroke-width: 2; transform: rotate(-14deg); }
+.postmark text { fill: #1c2e6b99; stroke: none; font: 600 9.5px "Marcellus SC", serif; letter-spacing: .5px; }
+.postmark .pm-d { font-size: 10px; }
+.v2 .seal-hint { color: #f1d68b; background: #3d0710cc; border: 1px solid #c9a24a; box-shadow: 0 4px 14px #0006; }
+.v2 #flash { background: radial-gradient(circle at 50% 55%, #fffdf4, #f9e7b5cc 30%, transparent 75%); }
+
+/* ---------- Hero over the royal night art ---------- */
+.v2 .glow::before { background: radial-gradient(closest-side, #0d1633b8, #0d163370 60%, transparent); }
+.v2 .shlokas { color: #f1d68b; }
+.v2 .names { color: #f3d58a; } .v2 .names .amp { color: #f1d68b; }
+.v2 .names { filter: drop-shadow(0 3px 8px #000c); }
+.v2 .range { color: #fff1d6; } .v2 .city { color: #f1d68b; }
+.v2 .dear { color: #f1d68b; }
+.v2 .invite-lines p { color: #f7ead0; }
+.v2 .dr { color: #f1d68b; } .v2 .par { color: #fff1d6; } .v2 .amp2 { color: #f1d68b; }
+
+/* ---------- Journey ---------- */
+.journey .map { width: 100%; max-width: 380px; margin: 8px auto 0; display: block; overflow: visible; }
+.journey .land { fill: #e8d9bb; }
+#flight { fill: none; stroke: #9b1d20; stroke-width: 1.6; stroke-linecap: round; opacity: .55; }
+#trail { fill: none; stroke: #c9a24a; stroke-width: 2.4; stroke-linecap: round; }
+.journey .pin { fill: #9b1d20; stroke: #fffaf0; stroke-width: 2; }
+#plane { fill: #13204a; }
+.journey .heart path { fill: #c0392b; }
+.journey .heart { opacity: 0; transform-origin: 252px 104px; transform: scale(.3); transition: opacity .4s, transform .6s cubic-bezier(.3, 1.8, .5, 1); }
+.journey.landed .heart { opacity: 1; transform: scale(1.25); }
+.homes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 6px 0 18px; }
+.homes div { display: flex; flex-direction: column; gap: 3px; }
+.homes b { font: 400 22px "Marcellus SC", "Rasa", serif; letter-spacing: .1em; color: var(--maroon); }
+.homes span { font: 18px "Marcellus", "Rasa", serif; color: var(--olive); }
+.homes small { font: 14px "Cormorant Garamond", "Rasa", serif; color: var(--ink); opacity: .8; line-height: 1.3; }
+
+/* ---------- Event scenes on darker illustrated art ---------- */
+.v2 .scene { --c: #f1d68b; --c2: #fff1d6; }
+.v2 .band::before { background: radial-gradient(closest-side, #12081ab8, #12081a60 65%, transparent); }
+.v2 .band .wk { color: #fff1d6; }
+.v2 .ritual-hint { background: linear-gradient(180deg, #b62b3f, #7a1022); color: #fff3d6; border: 1px solid #f1d68b88; }
+.v2 .details-btn { background: #fffaf21f; color: #f1d68b; border-color: #f1d68b; backdrop-filter: blur(4px); }
+.v2 .sheet-card { --c: #9b1d20; --c2: #b0406a; }
+.v2 .scene[data-ev="mehendi"] { --sc: #4f5634; --sc2: #9b4a48; }
+.v2 .scene[data-ev="survani"] { --sc: #ae3b5a; --sc2: #7a2a45; }
+.v2 .scene[data-ev="mandva"]  { --sc: #702254; --sc2: #8a5a2b; }
+.v2 .scene[data-ev="lagna"]   { --sc: #8c1d18; --sc2: #a26a3a; }
+.journey .title { font-size: 40px; }
+/* hero text sits above the illustrated couple */
+.v2 .hero-page.p1 { place-items: start center; padding-top: 6svh; }
+.v2 .p1 .om-wrap { width: min(calc(var(--u) * 16), 12svh); }
+.v2 .p1 .names .n1, .v2 .p1 .names .n2 { font-size: min(calc(var(--u) * 12), 7.4svh); }
+.v2 .p1 .names .amp { font-size: min(calc(var(--u) * 7), 4.5svh); }
+.v2 .p1 .shlokas { margin-bottom: 8px; }
+.v2 .p1 .glow::before { inset: -10% -24%; }
+.v2 { --seam-bg: #1a0a16; }
+
+/* =====================================================================
+   ONE-SHOT ROYAL WORLD - everything floats over one continuous palace scene
+   ===================================================================== */
+body.v2 { background: #12081a url("../assets/img/palace.webp") center / cover fixed; }
+.v2 #app { background: transparent; box-shadow: 0 0 80px #000a; position: relative; z-index: 1; }
+#world { position: fixed; z-index: 0; top: 0; bottom: 0; left: 50%; width: var(--col); transform: translateX(-50%); overflow: hidden; background: #12081a; }
+#world .palace { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform-origin: 50% 35%; will-change: transform; }
+#world .wash { position: absolute; inset: 0; --w1: #0d1633; --w2: #3d0710; opacity: .62;
+  background: linear-gradient(180deg, var(--w1) 0%, transparent 45%, var(--w2) 100%), linear-gradient(180deg, var(--w1), var(--w2)); }
+#world .moonglow { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 8%, #fff4d24a, transparent 45%), radial-gradient(ellipse at 50% 110%, #00000080, transparent 60%); }
+#world .toran { position: absolute; top: -1%; left: -4%; width: 108%; transform-origin: 50% 0; animation: toranSway 7s ease-in-out infinite; filter: drop-shadow(0 6px 10px #0008); }
+@keyframes toranSway { 0%, 100% { rotate: -.7deg; } 50% { rotate: .7deg; } }
+
+/* no cuts: sections are see-through, the world shows behind */
+.v2 .paper, .v2 footer, .v2 .credit, .v2 #scenes, .v2 .seam { background: transparent; }
+.v2 .paper::before, .v2 .paper::after, .v2 .seam { display: none; }
+.v2 .scene .cover { -webkit-mask-image: none; mask-image: none; }
+.v2 .family > .cover, .v2 .stick .art img { display: block; }
+.v2 .family > .cover { display: none; }
+.v2 .hero .stick .art img { object-fit: contain; object-position: bottom; }
+
+/* text on the world */
+.v2 .title { color: #f3d58a; text-shadow: 0 2px 12px #000a; }
+.v2 .gu-sub { color: #ffd0dd; }
+.v2 .note { color: #f7ead0; text-shadow: 0 1px 8px #000a; }
+.v2 .band { top: 9%; height: 42%; }
+
+/* modern glass cards with gold hairlines */
+.v2 .glassy, .v2 .countdown div, .v2 #glanceList a, .v2 .fam-card, .v2 #rsvpForm, .v2 .journey .homes > div, .v2 .medal {
+  background: linear-gradient(160deg, #ffffff1c, #ffffff08) !important; border: 1px solid #f1d68b55 !important;
+  backdrop-filter: blur(10px) saturate(140%); -webkit-backdrop-filter: blur(10px) saturate(140%); box-shadow: 0 10px 30px #0006, inset 0 1px 0 #ffffff30 !important; }
+.v2 .countdown b { color: #f3d58a; } .v2 .countdown span { color: #f7ead0; }
+.v2 #glanceList a { color: #fff1d6; } .v2 #glanceList .gt { color: #f7ead0; } .v2 #glanceList .gd { border-color: #f1d68b55; color: #f3d58a; }
+.v2 #glanceList .arrow { color: #f3d58a; }
+.v2 .btn.ghost { color: #f3d58a; border-color: #f1d68b; }
+.v2 .medal { box-shadow: 0 0 0 6px #ffffff10, 0 0 0 8px #f1d68b88, 0 14px 34px #0008 !important; }
+.v2 .medal .m-day { color: #f3d58a; } .v2 .medal .m-mon { color: #fff1d6; } .v2 .medal .m-line { color: #ffd0dd; }
+.v2 .journey .homes > div { padding: 12px 8px; border-radius: 16px; }
+.v2 .homes b { color: #f3d58a; } .v2 .homes span { color: #fff1d6; } .v2 .homes small { color: #f7ead0; }
+.v2 .journey .land { fill: #ffffff22; } .v2 #flight { stroke: #ffd0dd; } .v2 .journey .pin { fill: #f3d58a; stroke: #3d0710; } .v2 #plane { fill: #fff1d6; }
+.v2 .fam-card { border-radius: 24px; }
+.v2 .fam h3 { color: #f3d58a; } .v2 .fam h3::after { background: #f3d58a; } .v2 .fam li { color: #fff1d6; }
+.v2 .fam-group, .v2 .bless-only { color: #f7ead0; }
+.v2 .logo { mix-blend-mode: normal; background: #fffaf0; border-radius: 14px; padding: 8px 12px; width: 50%; }
+.v2 .reel figure { background: #fffaf0; }
+.v2 footer .sign, .v2 footer .frange { color: #f7ead0; } .v2 .fnames { color: #f3d58a; } .v2 .fgu { color: #fff1d6; }
+.v2 .credit { color: #f7ead0; opacity: .6; }
+.v2 #rsvpForm { padding: 18px; border-radius: 20px; }
+.v2 .choice span, .v2 .count select, .v2 #rsvpForm textarea { background: #ffffff14; color: #fff1d6; border-color: #f1d68b55; }
+.v2 .count { color: #fff1d6; }
+
+/* gold foil sheen on the names (elegant, slow) */
+.v2 .p1 .names { position: relative; }
+.v2 .p1 .names::after { content: ""; position: absolute; inset: 0; pointer-events: none; mix-blend-mode: overlay;
+  background: linear-gradient(100deg, transparent 35%, #fffbe8cc 50%, transparent 65%) -200% 0 / 200% 100% no-repeat; animation: sheen 5.5s ease-in-out 2s infinite; }
+@keyframes sheen { 0% { background-position: -200% 0; } 40%, 100% { background-position: 200% 0; } }
+.v2 .hero-page.p1 { padding-top: calc(var(--u) * 30 + 2svh); }
+#world .toran { width: 104%; left: -2%; }
+.v2 .journey .land { fill: #ffffff1f; stroke: #f1d68bb0; stroke-width: .9; stroke-linejoin: round; }
+.v2 .journey .mapname { fill: #f1d68bcc; font: 600 8px "Marcellus SC", serif; letter-spacing: 1px; }
+
+/* ---------- Hero: text on top, couple in the space left below - never overlapping ---------- */
+.v2 .hero .stick .art img { display: none; }
+.v2 .hero-page.p1 { display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  height: 100svh; min-height: 520px; padding: calc(var(--u) * 31 + .5svh) 6% 0; place-items: unset; }
+.v2 .p1 .glow { flex: 0 0 auto; }
+.v2 .p1 .shlokas { font-size: min(13px, 1.7svh); gap: 0 8px; margin-bottom: .6svh; }
+.v2 .p1 .om-wrap { width: min(calc(var(--u) * 13), 8.5svh); }
+.v2 .p1 .names { margin-top: .6svh; line-height: 1; }
+.v2 .p1 .names .n1, .v2 .p1 .names .n2 { font-size: min(calc(var(--u) * 11.5), 6.4svh); }
+.v2 .p1 .names .amp { font-size: min(calc(var(--u) * 6.5), 3.6svh); }
+.v2 .p1 .range { margin-top: 1svh; font-size: min(15.5px, 2.1svh); }
+.v2 .p1 .city { font-size: min(13px, 1.8svh); }
+.v2 .hero-couple { flex: 1 1 auto; min-height: 0; width: auto; max-width: 96%; height: 100%; margin-top: 1.2svh;
+  object-fit: contain; object-position: center bottom; filter: drop-shadow(0 14px 24px #000a); opacity: 0; transform: translateY(40px); }
+.lang-gu.v2 .p1 .names .n1, .lang-gu.v2 .p1 .names .n2 { font-size: min(calc(var(--u) * 10.5), 5.8svh); }
+
+/* breathing space between events so one event's props never touch the next title */
+.v2 .seam { display: block !important; height: 14svh; min-height: 90px; background: transparent; }
+.v2 .seam i, .v2 .seam b { display: none; }
+.v2 .band { top: 8%; height: 42%; }
