@@ -313,13 +313,22 @@
   // ---------- "Swipe up" hint (like the wedding invite) - shows when the viewer pauses ----------
   const sw = $("#swipe"); let swT = 0, swCount = 0;
   const atEnd = () => innerHeight + scrollY > document.documentElement.scrollHeight - 220;
-  function swShow() { if (!document.body.classList.contains("revealed") || !sheet.hidden || atEnd()) return; sw.classList.add("show"); }
+  let peeks = 0;
+  function peek() {   // lift the page a little so the viewer sees there is more below - never scrolls for them
+    if (peeks >= 1 || calm || scrollY > 40) return; peeks++;   // once only, and only on the first screen
+    document.body.classList.remove("peek"); void document.body.offsetWidth; document.body.classList.add("peek");
+    setTimeout(() => document.body.classList.remove("peek"), 1300);
+  }
+  function swShow() {
+    if (!document.body.classList.contains("revealed") || !sheet.hidden || atEnd()) return;
+    sw.classList.add("show"); peek();
+  }
   function swHide() { clearTimeout(swT); sw.classList.remove("show"); }
   function swIdle(ms) { swHide(); swT = setTimeout(swShow, ms); }
   addEventListener("scroll", () => swIdle(swCount++ < 40 ? 3000 : 6000), { passive: true });
   addEventListener("pointerdown", () => sw.classList.contains("show") && swIdle(4500), { passive: true });
-  new MutationObserver(() => { if (document.body.classList.contains("revealed")) swIdle(1200); })
-    .observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  const revealWatch = new MutationObserver(() => { if (document.body.classList.contains("revealed")) { revealWatch.disconnect(); swIdle(1200); } });
+  revealWatch.observe(document.body, { attributes: true, attributeFilter: ["class"] });
 
   document.body.classList.add("locked");
   render();

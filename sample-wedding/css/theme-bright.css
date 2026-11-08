@@ -119,3 +119,8 @@ body.locked .sample-badge { z-index: 120; }
   background: conic-gradient(#ff5a8a calc(var(--p, 0) * 360deg), #ffffff55 0); -webkit-mask: radial-gradient(closest-side, transparent 88%, #000 90%); mask: radial-gradient(closest-side, transparent 88%, #000 90%); }
 .bright .scene:not(.done) .hold .rose { animation: roseBreath 2.4s ease-in-out infinite; }
 @keyframes roseBreath { 50% { filter: drop-shadow(0 8px 16px #a3124a66) drop-shadow(0 0 18px #ffd0e0); } }
+
+/* ---------- Reels-style "peek": content lifts a little and springs back (no real scrolling) ---------- */
+@keyframes peekUp { 0% { transform: translateY(0); } 30% { transform: translateY(-72px); } 55% { transform: translateY(-72px); }
+  80% { transform: translateY(6px); } 100% { transform: translateY(0); } }
+body.peek #app { animation: peekUp 1.25s cubic-bezier(.3, .7, .2, 1) both; }

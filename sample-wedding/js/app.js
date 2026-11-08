@@ -297,7 +297,13 @@
     const mid = innerHeight / 2;
     const live = $$(".scene").find((x) => { const r = x.getBoundingClientRect(); return r.top < mid && r.bottom > mid; });
     if (live && !live.classList.contains("done")) return;   // the ritual hint is the guide here
-    sw.classList.add("show");
+    sw.classList.add("show"); peek();
+  }
+  let peeks = 0;
+  function peek() {   // Reels-style nudge: the page lifts a little and springs back - never scrolls for the guest
+    if (peeks >= 1 || calm || scrollY > 40) return; peeks++;   // once only, and only on the first screen
+    document.body.classList.remove("peek"); void document.body.offsetWidth; document.body.classList.add("peek");
+    setTimeout(() => document.body.classList.remove("peek"), 1300);
   }
   function swHide() { clearTimeout(swT); sw.classList.remove("show"); }
   function swIdle(ms) { swHide(); swT = setTimeout(swShow, ms); }
