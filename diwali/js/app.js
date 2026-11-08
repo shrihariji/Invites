@@ -11,6 +11,7 @@
   const T = {
     gu: {
       hint: "દીવો પ્રગટાવવા ટેપ કરો 🪔",
+      swipe: "ઉપર સ્વાઇપ કરો",
       fromTop: ["✨ આપના માટે દિવાળીની શુભેચ્છા", "તરફથી"],
       t1: "શુભ દીપાવલી",
       l1: "દીવાની જ્યોત જેમ આપનું જીવન સદા ઝળહળતું રહે",
@@ -37,6 +38,7 @@
     },
     hi: {
       hint: "दीया जलाने के लिए टैप करें 🪔",
+      swipe: "ऊपर स्वाइप करें",
       fromTop: ["✨ आपके लिए दिवाली की शुभकामना", "की ओर से"],
       t1: "शुभ दीपावली",
       l1: "दीयों की रोशनी से आपका जीवन सदा जगमगाता रहे",
@@ -63,6 +65,7 @@
     },
     en: {
       hint: "Tap to light the diya 🪔",
+      swipe: "Swipe up",
       fromTop: ["✨ A Diwali wish for you from", ""],
       t1: "Happy Diwali",
       l1: "May the light of every diya fill your home with joy",
@@ -110,6 +113,7 @@
     document.body.dataset.lang = lang; document.documentElement.lang = lang;
     $$(".lang-chips.top button").forEach((b) => b.classList.toggle("on", b.dataset.l === lang));
     $("#tapHint").textContent = t("hint");
+    $("#swipeTxt").textContent = t("swipe");
     const ft = $("#fromTop"); ft.textContent = ""; const [a, b] = t("fromTop");
     const nm = document.createElement("b"); nm.textContent = W.f; ft.append(a, nm, b); ft.classList.add("show");
     $("#t1").textContent = t("t1"); $("#l1").textContent = t("l1");
@@ -305,6 +309,17 @@
   $("#btnCopyLink").addEventListener("click", () => copy(lastLink));
   $("#btnShare").addEventListener("click", () => navigator.share({ text: fullText }).catch(() => {}));
   $("#btnAgain").addEventListener("click", () => { $("#inFrom").value = ""; msgEdited = false; fillMsg(); $("#formStep").hidden = false; $("#doneStep").hidden = true; });
+
+  // ---------- "Swipe up" hint (like the wedding invite) - shows when the viewer pauses ----------
+  const sw = $("#swipe"); let swT = 0, swCount = 0;
+  const atEnd = () => innerHeight + scrollY > document.documentElement.scrollHeight - 220;
+  function swShow() { if (!document.body.classList.contains("revealed") || !sheet.hidden || atEnd()) return; sw.classList.add("show"); }
+  function swHide() { clearTimeout(swT); sw.classList.remove("show"); }
+  function swIdle(ms) { swHide(); swT = setTimeout(swShow, ms); }
+  addEventListener("scroll", () => swIdle(swCount++ < 40 ? 3000 : 6000), { passive: true });
+  addEventListener("pointerdown", () => sw.classList.contains("show") && swIdle(4500), { passive: true });
+  new MutationObserver(() => { if (document.body.classList.contains("revealed")) swIdle(1200); })
+    .observe(document.body, { attributes: true, attributeFilter: ["class"] });
 
   document.body.classList.add("locked");
   render();
