@@ -212,6 +212,6 @@
           : `We are sorry to miss the ${D.occasion} of ${D.groom.first} & ${D.bride.first}, but send our blessings.`,
       f.msg.value.trim()
     ].filter(Boolean);
-    window.open(`https://wa.me/${D.rsvp.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank");
+    window.open(`https://api.whatsapp.com/send?phone=${D.rsvp.whatsapp}&text=${encodeURIComponent(lines.join("\n"))}`, "_blank");
   });
 })();

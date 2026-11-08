@@ -121,7 +121,7 @@
       $("#rsvpBy").textContent = D.rsvp.by ? `${t("replyBy")} ${D.rsvp.by}` : t("letUsKnow");
     }
     const c = D.credit || {};
-    $("#creditWa").href = `https://wa.me/${c.phone}?text=${encodeURIComponent(t("creditMsg"))}`;
+    $("#creditWa").href = `https://api.whatsapp.com/send?phone=${c.phone}&text=${encodeURIComponent(t("creditMsg"))}`;
     $("#creditTel").href = `tel:+${c.phone}`; $("#creditTel").textContent = c.show || c.phone;
     if (ready) {
       if (!scratchTouched) paintScratch();
@@ -659,6 +659,6 @@
     const f = $("#rsvpForm"), yes = f.att.value === "yes";
     const msg = [...t("rsvpMsg")(guestName(), D.bride.first, D.groom.first, yes, f.count.value),
       f.msg.value.trim()].filter(Boolean).join("\n");
-    open(`https://wa.me/${D.rsvp.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
+    open(`https://api.whatsapp.com/send?phone=${D.rsvp.whatsapp}&text=${encodeURIComponent(msg)}`, "_blank");
   });
 })();

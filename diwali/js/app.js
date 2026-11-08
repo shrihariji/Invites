@@ -134,7 +134,7 @@
     $("#btnCreate").textContent = t("create"); $("#btnForward").textContent = t("forward"); $("#tapMore").textContent = t("tapMore");
     $("#sEyebrow").textContent = t("sEyebrow"); $("#sTag").textContent = t("sTag");
     $("#sOcc").innerHTML = ""; t("occ").forEach((o) => { const li = document.createElement("li"); li.textContent = o; $("#sOcc").append(li); });
-    $("#waStudio").textContent = t("waStudio"); $("#waStudio").href = `https://wa.me/${PHONE}?text=${encodeURIComponent(t("waStudioMsg"))}`;
+    $("#waStudio").textContent = t("waStudio"); $("#waStudio").href = `https://api.whatsapp.com/send?phone=${PHONE}&text=${encodeURIComponent(t("waStudioMsg"))}`;
     $("#callStudio").textContent = t("call"); $("#sample").textContent = t("sample");
     $("#scBadge").textContent = t("scBadge"); $("#scTitle").textContent = t("scTitle"); $("#scBtn").textContent = t("scBtn");
     $("#scPoints").innerHTML = ""; t("scPoints").forEach((p) => { const li = document.createElement("li"); li.textContent = p; $("#scPoints").append(li); });
@@ -275,7 +275,7 @@
 
   // ---------- sharing ----------
   const toast = (m) => { const el = $("#toast"); el.textContent = m; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => (el.hidden = true), 2200); };
-  const waLink = (text) => `https://wa.me/?text=${encodeURIComponent(text)}`;
+  const waLink = (text) => `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
   async function copy(text) {
     try { await navigator.clipboard.writeText(text); }
     catch (e) { const ta = document.createElement("textarea"); ta.value = text; document.body.append(ta); ta.select(); document.execCommand("copy"); ta.remove(); }
