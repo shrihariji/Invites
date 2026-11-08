@@ -194,3 +194,14 @@ body.revealed .fx-strip { display: block; }
   -webkit-mask-image: radial-gradient(ellipse closest-side at 50% 50%, #000 55%, transparent 100%);
           mask-image: radial-gradient(ellipse closest-side at 50% 50%, #000 55%, transparent 100%); }
 .fx-strip .ck { -webkit-mask-image: radial-gradient(circle closest-side, #000 50%, transparent 98%); mask-image: radial-gradient(circle closest-side, #000 50%, transparent 98%); }
+
+/* ---------- tapping hand on the unlit diya ---------- */
+.tap-hand { position: absolute; left: 50%; top: 47%; width: 21%; aspect-ratio: 1; z-index: 4; pointer-events: none;
+  transform: translate(-48%, 0); animation: handTap 1.6s ease-in-out infinite; }
+.tap-hand svg { width: 100%; height: 100%; fill: #fff; stroke: #3a1406; stroke-width: 1.6; stroke-linejoin: round;
+  filter: drop-shadow(0 4px 8px #000a); }
+.tap-ring { position: absolute; left: 48%; top: 19%; width: 70%; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%;
+  border: 3px solid #ffd36b; opacity: 0; animation: handRing 1.6s ease-out infinite; }
+@keyframes handTap { 0%, 100% { transform: translate(-48%, 18%) scale(1); } 45% { transform: translate(-48%, 0) scale(.92); } 55% { transform: translate(-48%, 0) scale(.92); } }
+@keyframes handRing { 0%, 40% { opacity: 0; scale: .3; } 50% { opacity: 1; scale: .4; } 100% { opacity: 0; scale: 1.6; } }
+body.lit .tap-hand { display: none; }
