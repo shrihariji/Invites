@@ -23,6 +23,9 @@
       create: "🪔 મારી શુભેચ્છા બનાવો", forward: "📤 આ શુભેચ્છા આગળ મોકલો", tapMore: "આકાશમાં ટેપ કરો — વધુ ફટાકડા! 🎆",
       sEyebrow: "આ શુભેચ્છા ગમી?", sTag: "દરેક પ્રસંગ માટે ઇન્ટરેક્ટિવ ડિજિટલ આમંત્રણ અને શુભેચ્છા",
       occ: ["💍 લગ્ન", "💝 સગાઈ", "🎂 જન્મદિવસ", "🏡 વાસ્તુ પૂજન", "🪔 તહેવારની શુભેચ્છા", "✨ કોઈ પણ પ્રસંગ"],
+      scBadge: "✨ નવું · ડિજિટલ લગ્ન આમંત્રણ", scTitle: "આપના લગ્ન માટે આવું સુંદર ડિજિટલ આમંત્રણ?",
+      scPoints: ["💌 દરેક મહેમાનને પોતાનું નામ", "🎵 આપના નામ સાથેનું ગીત", "👰 આપનો કાર્ટૂન અવતાર કે ફોટો", "📍 મેપ, કૅલેન્ડર, વૉટ્સએપ RSVP"],
+      scBtn: "💍 લગ્ન આમંત્રણનો નમૂનો જુઓ →",
       waStudio: "💬 વૉટ્સએપ કરો", call: "📞 કૉલ કરો", sample: "👉 લગ્ન આમંત્રણનો નમૂનો જુઓ",
       waStudioMsg: "નમસ્તે HariKrishna AI Studios, મેં આપની દિવાળી શુભેચ્છા જોઈ. મારે ડિજિટલ આમંત્રણ / શુભેચ્છા બનાવવી છે.",
       cTitle: "આપની શુભેચ્છા બનાવો", lbFrom: "આપનું / પરિવારનું નામ", phFrom: "દા.ત. મનુભાઈ પટેલ અને પરિવાર",
@@ -50,6 +53,9 @@
       create: "🪔 मेरी शुभकामना बनाएँ", forward: "📤 यह शुभकामना आगे भेजें", tapMore: "आसमान पर टैप करें — और आतिशबाज़ी! 🎆",
       sEyebrow: "यह शुभकामना पसंद आई?", sTag: "हर अवसर के लिए इंटरैक्टिव डिजिटल निमंत्रण और शुभकामनाएँ",
       occ: ["💍 शादी", "💝 सगाई", "🎂 जन्मदिन", "🏡 गृह प्रवेश", "🪔 त्योहार की शुभकामना", "✨ कोई भी अवसर"],
+      scBadge: "✨ नया · डिजिटल शादी निमंत्रण", scTitle: "अपनी शादी के लिए ऐसा सुंदर डिजिटल निमंत्रण?",
+      scPoints: ["💌 हर मेहमान को अपना नाम", "🎵 आपके नाम वाला गीत", "👰 आपका कार्टून अवतार या फ़ोटो", "📍 मैप, कैलेंडर, व्हाट्सऐप RSVP"],
+      scBtn: "💍 शादी के निमंत्रण का नमूना देखें →",
       waStudio: "💬 व्हाट्सऐप करें", call: "📞 कॉल करें", sample: "👉 शादी के निमंत्रण का नमूना देखें",
       waStudioMsg: "नमस्ते HariKrishna AI Studios, मैंने आपकी दिवाली शुभकामना देखी। मुझे डिजिटल निमंत्रण / शुभकामना बनवानी है।",
       cTitle: "अपनी शुभकामना बनाएँ", lbFrom: "आपका / परिवार का नाम", phFrom: "जैसे: मनुभाई पटेल एवं परिवार",
@@ -77,6 +83,9 @@
       create: "🪔 Create my wish", forward: "📤 Forward this wish", tapMore: "Tap the sky for more fireworks! 🎆",
       sEyebrow: "Loved this wish?", sTag: "Interactive digital invitations & wishes for every occasion",
       occ: ["💍 Wedding", "💝 Engagement", "🎂 Birthday", "🏡 Housewarming", "🪔 Festival wishes", "✨ Any event"],
+      scBadge: "✨ New · Digital wedding invitations", scTitle: "A beautiful digital invitation like this for your wedding?",
+      scPoints: ["💌 Every guest sees their own name", "🎵 A song with your names", "👰 Your cartoon avatar or photo", "📍 Map, calendar & WhatsApp RSVP"],
+      scBtn: "💍 See the sample wedding invite →",
       waStudio: "💬 WhatsApp us", call: "📞 Call now", sample: "👉 See a sample wedding invite",
       waStudioMsg: "Hi HariKrishna AI Studios, I saw your Diwali wish. I'd like a digital invitation / wish made.",
       cTitle: "Create your wish", lbFrom: "Your / family name", phFrom: "e.g. Manubhai Patel & Family",
@@ -127,6 +136,8 @@
     $("#sOcc").innerHTML = ""; t("occ").forEach((o) => { const li = document.createElement("li"); li.textContent = o; $("#sOcc").append(li); });
     $("#waStudio").textContent = t("waStudio"); $("#waStudio").href = `https://wa.me/${PHONE}?text=${encodeURIComponent(t("waStudioMsg"))}`;
     $("#callStudio").textContent = t("call"); $("#sample").textContent = t("sample");
+    $("#scBadge").textContent = t("scBadge"); $("#scTitle").textContent = t("scTitle"); $("#scBtn").textContent = t("scBtn");
+    $("#scPoints").innerHTML = ""; t("scPoints").forEach((p) => { const li = document.createElement("li"); li.textContent = p; $("#scPoints").append(li); });
     // sheet
     $("#cTitle").textContent = t("cTitle"); $("#lbFrom").textContent = t("lbFrom"); $("#inFrom").placeholder = t("phFrom");
     $("#lbLang").textContent = t("lbLang"); $("#lbMsg").textContent = t("lbMsg"); $("#msgHint").textContent = t("msgHint");

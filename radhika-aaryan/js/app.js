@@ -61,7 +61,7 @@
              <span class="flame" style="left:27%;top:80%"></span><span class="flame" style="left:72.6%;top:80%"></span>` :
              `<div class="aura" style="left:${p.x}%;top:${p.y}%;width:46%;aspect-ratio:1;transform:translate(-50%,-50%)"></div>`) +
              `<button class="hit" style="${box(p)}" aria-label="Offer flowers to Ganpati"></button>${ghost("tap", p.x, p.y)}`,
-    lagna: (p) => `<button class="hold" style="left:${p.x}%;top:${p.y}%;width:${p.w}%" aria-label="Press and hold to shower flowers"><svg viewBox="-50 -50 100 100" aria-hidden="true">${[...Array(8)].map((_, i) => `<ellipse class="pt" rx="12" ry="23" cy="-23" transform="rotate(${i * 45})"/>`).join("")}${[...Array(8)].map((_, i) => `<ellipse class="pt2" rx="7" ry="15" cy="-15" transform="rotate(${i * 45 + 22.5})"/>`).join("")}<circle class="ctr" r="10"/></svg></button>${ghost("hold", p.x, p.y)}`
+    lagna: (p) => `<button class="hold" style="left:${p.x}%;top:${p.y}%;width:${p.w}%" aria-label="Press and hold the rose to shower flowers"><svg viewBox="-50 -50 100 100" aria-hidden="true">${[...Array(8)].map((_, i) => `<ellipse class="pt" rx="12" ry="23" cy="-23" transform="rotate(${i * 45})"/>`).join("")}${[...Array(8)].map((_, i) => `<ellipse class="pt2" rx="7" ry="15" cy="-15" transform="rotate(${i * 45 + 22.5})"/>`).join("")}<circle class="ctr" r="10"/></svg><img class="rose" src="assets/img/rose.webp" alt="" draggable="false" decoding="async"><i class="ring"></i></button>${ghost("hold", p.x, p.y)}`
   };
   $("#scenes").innerHTML = events.map((e) => `<section class="scene" id="ev-${e.id}" data-ev="${e.id}">
       <div class="cover"><div class="art"><div class="kb">
