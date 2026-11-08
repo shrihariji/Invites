@@ -296,7 +296,13 @@
     const mid = innerHeight / 2;
     const live = $$(".scene").find((x) => { const r = x.getBoundingClientRect(); return r.top < mid && r.bottom > mid; });
     if (live && !live.classList.contains("done")) return;   // the ritual hint is the guide here
-    sw.classList.add("show");
+    sw.classList.add("show"); peek();
+  }
+  let peeks = 0;
+  function peek() {   // Reels-style nudge: the page lifts a little and springs back - once, first screen only
+    if (peeks >= 1 || calm || scrollY > 40) return; peeks++;
+    document.body.classList.remove("peek"); void document.body.offsetWidth; document.body.classList.add("peek");
+    setTimeout(() => document.body.classList.remove("peek"), 1300);
   }
   function swHide() { clearTimeout(swT); sw.classList.remove("show"); }
   function swIdle(ms) { swHide(); swT = setTimeout(swShow, ms); }
@@ -462,9 +468,16 @@
       burst(r.left + r.width / 2, r.top + r.height * .45, 70, PAL.mehendi.concat(PAL.gold), "petal", 7);
       setTimeout(() => finish(sc), 650);
     };
-    box.addEventListener("pointerdown", (e) => { if (done || !ready) return; down = true; sc.classList.add("touched"); S.unlock(); erase(e); });
-    box.addEventListener("pointermove", (e) => { if (down && !done) erase(e); });
-    ["pointerup", "pointerleave", "pointercancel"].forEach((ev) => box.addEventListener(ev, () => { down = false; check(); }));
+    // One rub is enough: after a short stroke (or when the finger lifts) the whole mehendi fills in by itself.
+    let strokes = 0;
+    const autoFill = () => {
+      if (done) return; done = true; down = false;
+      can.style.transition = "opacity .8s ease"; can.style.opacity = "0";
+      setTimeout(() => { done = false; complete(); }, 650);
+    };
+    box.addEventListener("pointerdown", (e) => { if (done || !ready) return; down = true; sc.classList.add("touched"); S.unlock(); erase(e); strokes++; });
+    box.addEventListener("pointermove", (e) => { if (down && !done) { erase(e); if (++strokes > 7) autoFill(); } });
+    ["pointerup", "pointerleave", "pointercancel"].forEach((ev) => box.addEventListener(ev, () => { down = false; if (strokes) autoFill(); }));
   }
 
   function mehendi(sc, art) {
