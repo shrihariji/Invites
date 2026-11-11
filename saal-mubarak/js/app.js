@@ -1,4 +1,4 @@
-/* Saal Mubarak (Gujarati New Year) wish - HariKrishna AI Studios
+/* Nutan Varshabhinandan (Gujarati New Year) wish - HariKrishna AI Studios
    A wish link carries the sender's name in ?w= (base64url JSON {f: from, t: to, l: lang}); no server needed.
    Plain ?f=Name&t=Name&l=gu also works. No parameters = the studio's own wish. */
 (() => {
@@ -12,10 +12,10 @@
     gu: {
       hint: "નવા ચોપડે સાથિયો પૂરવા ટેપ કરો 🙏",
       swipe: "ઉપર સ્વાઇપ કરો",
-      fromTop: ["✨ આપના માટે નવા વર્ષની શુભેચ્છા", "તરફથી"],
-      t1: "સાલ મુબારક",
+      jsn: "॥ જય સ્વામિનારાયણ ॥", fromTop: ["✨ આપના માટે નવા વર્ષની શુભેચ્છા", "તરફથી"],
+      t1: "નૂતન વર્ષાભિનંદન",
       l1: "નવો દિવસ, નવો ચોપડો, નવી શરૂઆત — આપનું દરેક પાનું શુભ અને લાભથી ભરાય",
-      t2: "નૂતન વર્ષાભિનંદન",
+      t2: "નવું વર્ષ મંગલમય હો",
       l2: "નવું વર્ષ આપના પરિવાર માટે સુખ, શાંતિ, સમૃદ્ધિ અને તંદુરસ્તી લઈને આવે.",
       sv: ["વિક્રમ સંવત", "૨૦૮", "૨", "૩"], signPre: "શુભેચ્છક", toPre: (t) => `સ્નેહી ${t},`,
       aTitle: "આપ પણ આપના સ્વજનોને શુભેચ્છા મોકલો",
@@ -27,25 +27,25 @@
       scPoints: ["💌 દરેક મહેમાનને પોતાનું નામ", "🎵 આપના નામ સાથેનું ગીત", "👰 આપનો કાર્ટૂન અવતાર કે ફોટો", "📍 મેપ, કૅલેન્ડર, વૉટ્સએપ RSVP"],
       scBtn: "💍 લગ્ન આમંત્રણનો નમૂનો જુઓ →",
       waStudio: "💬 વૉટ્સએપ કરો", call: "📞 કૉલ કરો", sample: "👉 લગ્ન આમંત્રણનો નમૂનો જુઓ",
-      waStudioMsg: "નમસ્તે HariKrishna AI Studios, મેં આપની સાલ મુબારક શુભેચ્છા જોઈ. મારે ડિજિટલ આમંત્રણ / શુભેચ્છા બનાવવી છે.",
+      waStudioMsg: "નમસ્તે HariKrishna AI Studios, મેં આપની નૂતન વર્ષાભિનંદન શુભેચ્છા જોઈ. મારે ડિજિટલ આમંત્રણ / શુભેચ્છા બનાવવી છે.",
       cTitle: "આપની શુભેચ્છા બનાવો", lbFrom: "આપનું / પરિવારનું નામ", phFrom: "દા.ત. મનુભાઈ પટેલ અને પરિવાર",
       lbLang: "શુભેચ્છાની ભાષા", lbMsg: "આપનો સંદેશ (જરૂર હોય તો બદલો)", msgHint: "નીચે આપની ખાસ લિંક આપોઆપ ઉમેરાશે.",
       copyAll: "📋 સંદેશ + લિંક કૉપી કરો", copyLink: "🔗 ફક્ત લિંક કૉપી કરો", copiedAll: "સંદેશ અને લિંક કૉપી થઈ ગયાં — હવે ગમે ત્યાં પેસ્ટ કરો!",
-      tmpl: (n) => `🙏 સાલ મુબારક! નૂતન વર્ષાભિનંદન ✨\nવિક્રમ સંવત ૨૦૮૩ આપના અને આપના પરિવાર માટે સુખ, શાંતિ, સમૃદ્ધિ અને તંદુરસ્તી લઈને આવે.\n\n— ${n || "આપનું નામ"}`,
+      tmpl: (n) => `🙏 જય સ્વામિનારાયણ\nનૂતન વર્ષાભિનંદન ✨\nવિક્રમ સંવત ૨૦૮૩ આપના અને આપના પરિવાર માટે સુખ, શાંતિ, સમૃદ્ધિ અને તંદુરસ્તી લઈને આવે.\n\n— ${n || "આપનું નામ"}`,
       linkLine: "👇 મારી ખાસ શુભેચ્છા અહીં ખોલો:",
       make: "✨ શુભેચ્છા તૈયાર કરો", err: "કૃપા કરી આપનું નામ લખો",
       dTitle: "આપની શુભેચ્છા તૈયાર છે! 🎉", dSub: "હવે વૉટ્સએપ પર સ્વજનોને મોકલો — જે ખોલશે તેને આપનું નામ દેખાશે.",
       wa: "વૉટ્સએપ પર મોકલો", copy: "🔗 લિંક કૉપી કરો", copied: "લિંક કૉપી થઈ ગઈ!", share: "📤 બીજી રીતે શેર કરો",
       preview: "👀 પહેલાં જોઈ લો", again: "બીજા નામથી બનાવો",
-      msg: (f, u) => `🙏 સાલ મુબારક! નૂતન વર્ષાભિનંદન ✨\n${f} તરફથી આપના માટે એક ખાસ શુભેચ્છા 👇\n${u}`
+      msg: (f, u) => `🙏 જય સ્વામિનારાયણ\nનૂતન વર્ષાભિનંદન ✨\n${f} તરફથી આપના માટે એક ખાસ શુભેચ્છા 👇\n${u}`
     },
     hi: {
       hint: "नए बही-खाते पर स्वस्तिक बनाने के लिए टैप करें 🙏",
       swipe: "ऊपर स्वाइप करें",
-      fromTop: ["✨ आपके लिए नए साल की शुभकामना", "की ओर से"],
-      t1: "साल मुबारक",
+      jsn: "॥ जय स्वामिनारायण ॥", fromTop: ["✨ आपके लिए नए साल की शुभकामना", "की ओर से"],
+      t1: "नूतन वर्षाभिनंदन",
       l1: "नया दिन, नया बही-खाता, नई शुरुआत — आपका हर पन्ना शुभ और लाभ से भरा रहे",
-      t2: "नूतन वर्ष की शुभकामनाएँ",
+      t2: "नव वर्ष मंगलमय हो",
       l2: "नया साल आपके परिवार के लिए सुख, शांति, समृद्धि और अच्छी सेहत लेकर आए।",
       sv: ["विक्रम संवत", "२०८", "२", "३"], signPre: "शुभेच्छु", toPre: (t) => `प्रिय ${t},`,
       aTitle: "आप भी अपनों को शुभकामना भेजें",
@@ -57,23 +57,23 @@
       scPoints: ["💌 हर मेहमान को अपना नाम", "🎵 आपके नाम वाला गीत", "👰 आपका कार्टून अवतार या फ़ोटो", "📍 मैप, कैलेंडर, व्हाट्सऐप RSVP"],
       scBtn: "💍 शादी के निमंत्रण का नमूना देखें →",
       waStudio: "💬 व्हाट्सऐप करें", call: "📞 कॉल करें", sample: "👉 शादी के निमंत्रण का नमूना देखें",
-      waStudioMsg: "नमस्ते HariKrishna AI Studios, मैंने आपकी साल मुबारक शुभकामना देखी। मुझे डिजिटल निमंत्रण / शुभकामना बनवानी है।",
+      waStudioMsg: "नमस्ते HariKrishna AI Studios, मैंने आपकी नूतन वर्षाभिनंदन शुभकामना देखी। मुझे डिजिटल निमंत्रण / शुभकामना बनवानी है।",
       cTitle: "अपनी शुभकामना बनाएँ", lbFrom: "आपका / परिवार का नाम", phFrom: "जैसे: मनुभाई पटेल एवं परिवार",
       lbLang: "शुभकामना की भाषा", lbMsg: "आपका संदेश (चाहें तो बदलें)", msgHint: "नीचे आपकी खास लिंक अपने आप जुड़ जाएगी।",
       copyAll: "📋 संदेश + लिंक कॉपी करें", copyLink: "🔗 सिर्फ़ लिंक कॉपी करें", copiedAll: "संदेश और लिंक कॉपी हो गए — अब कहीं भी पेस्ट करें!",
-      tmpl: (n) => `🙏 साल मुबारक! नूतन वर्ष की हार्दिक शुभकामनाएँ ✨\nविक्रम संवत २०८३ आपके और आपके परिवार के लिए सुख, शांति, समृद्धि और अच्छी सेहत लेकर आए।\n\n— ${n || "आपका नाम"}`,
+      tmpl: (n) => `🙏 जय स्वामिनारायण\nनूतन वर्षाभिनंदन ✨\nविक्रम संवत २०८३ आपके और आपके परिवार के लिए सुख, शांति, समृद्धि और अच्छी सेहत लेकर आए।\n\n— ${n || "आपका नाम"}`,
       linkLine: "👇 मेरी खास शुभकामना यहाँ खोलें:",
       make: "✨ शुभकामना तैयार करें", err: "कृपया अपना नाम लिखें",
       dTitle: "आपकी शुभकामना तैयार है! 🎉", dSub: "अब व्हाट्सऐप पर अपनों को भेजें — जो खोलेगा उसे आपका नाम दिखेगा।",
       wa: "व्हाट्सऐप पर भेजें", copy: "🔗 लिंक कॉपी करें", copied: "लिंक कॉपी हो गई!", share: "📤 दूसरे तरीके से शेयर करें",
       preview: "👀 पहले देख लें", again: "दूसरे नाम से बनाएँ",
-      msg: (f, u) => `🙏 साल मुबारक! नूतन वर्ष की हार्दिक शुभकामनाएँ ✨\n${f} की ओर से आपके लिए एक खास शुभकामना 👇\n${u}`
+      msg: (f, u) => `🙏 जय स्वामिनारायण\nनूतन वर्षाभिनंदन ✨\n${f} की ओर से आपके लिए एक खास शुभकामना 👇\n${u}`
     },
     en: {
       hint: "Tap to draw the swastik on the new chopda 🙏",
       swipe: "Swipe up",
-      fromTop: ["✨ A New Year wish for you from", ""],
-      t1: "Saal Mubarak",
+      jsn: "॥ Jai Swaminarayan ॥", fromTop: ["✨ A New Year wish for you from", ""],
+      t1: "Nutan Varshabhinandan",
       l1: "A new day, a new book, a new beginning — may every page be filled with shubh and labh",
       t2: "Happy New Year",
       l2: "May the new year bring your family happiness, peace, prosperity and good health.",
@@ -87,17 +87,17 @@
       scPoints: ["💌 Every guest sees their own name", "🎵 A song with your names", "👰 Your cartoon avatar or photo", "📍 Map, calendar & WhatsApp RSVP"],
       scBtn: "💍 See the sample wedding invite →",
       waStudio: "💬 WhatsApp us", call: "📞 Call now", sample: "👉 See a sample wedding invite",
-      waStudioMsg: "Hi HariKrishna AI Studios, I saw your Saal Mubarak wish. I'd like a digital invitation / wish made.",
+      waStudioMsg: "Hi HariKrishna AI Studios, I saw your Nutan Varshabhinandan wish. I'd like a digital invitation / wish made.",
       cTitle: "Create your wish", lbFrom: "Your / family name", phFrom: "e.g. Manubhai Patel & Family",
       lbLang: "Language of the wish", lbMsg: "Your message (edit if you like)", msgHint: "Your special link is added at the end automatically.",
       copyAll: "📋 Copy message + link", copyLink: "🔗 Copy link only", copiedAll: "Message and link copied — paste it anywhere!",
-      tmpl: (n) => `🙏 Saal Mubarak! Happy New Year ✨\nMay Vikram Samvat 2083 bring you and your family happiness, peace, prosperity and good health.\n\n— ${n || "Your name"}`,
+      tmpl: (n) => `🙏 Jai Swaminarayan\nNutan Varshabhinandan · Happy New Year ✨\nMay Vikram Samvat 2083 bring you and your family happiness, peace, prosperity and good health.\n\n— ${n || "Your name"}`,
       linkLine: "👇 Open my special New Year wish here:",
       make: "✨ Create my wish", err: "Please type your name",
       dTitle: "Your wish is ready! 🎉", dSub: "Now send it on WhatsApp — everyone who opens it will see your name.",
       wa: "Send on WhatsApp", copy: "🔗 Copy link", copied: "Link copied!", share: "📤 Share another way",
       preview: "👀 Preview first", again: "Make one with another name",
-      msg: (f, u) => `🙏 Saal Mubarak! Happy New Year ✨\nA special wish for you from ${f} 👇\n${u}`
+      msg: (f, u) => `🙏 Jai Swaminarayan\nNutan Varshabhinandan · Happy New Year ✨\nA special wish for you from ${f} 👇\n${u}`
     }
   };
 
@@ -121,7 +121,7 @@
   function render() {
     document.body.dataset.lang = lang; document.documentElement.lang = lang;
     $$(".lang-chips.top button").forEach((b) => b.classList.toggle("on", b.dataset.l === lang));
-    $("#tapHint").textContent = t("hint");
+    $("#jsn").textContent = t("jsn"); $("#tapHint").textContent = t("hint");
     $("#swipeTxt").textContent = t("swipe");
     const ft = $("#fromTop"); ft.textContent = ""; const [a, b] = t("fromTop");
     const nm = document.createElement("b"); nm.textContent = W.f; ft.append(a, nm, b); ft.classList.add("show");
