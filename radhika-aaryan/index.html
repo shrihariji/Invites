@@ -23,7 +23,7 @@
   <link rel="prefetch" href="assets/img/palms-mehendi.webp">
   <link rel="preload" as="image" href="assets/img/gate-left.webp">
   <link rel="preload" as="image" href="assets/img/gate-right.webp">
-  <link rel="stylesheet" href="css/style.css?v=26">
+  <link rel="stylesheet" href="css/style.css?v=28">
 </head>
 <body class="locked" data-opener="gates">
   <div id="lang" role="group" aria-label="Language"><button data-l="en">EN</button><button data-l="gu">ગુજ</button></div>
@@ -92,6 +92,10 @@
           <span class="m-line" data-field="dateReveal.line"></span>
         </div>
         <canvas id="scratch" aria-label="Scratch area"></canvas>
+        <div class="scratch-hint" aria-hidden="true">
+          <svg class="sh-trail" viewBox="0 0 100 100" preserveAspectRatio="none"><polyline pathLength="1" points="28,36 72,42 30,50 72,57 32,64"/></svg>
+          <svg class="sh-hand" viewBox="0 0 48 48"><path d="M20 23V9.5a3 3 0 0 1 6 0V20l8.4 1.7a4.6 4.6 0 0 1 3.6 5.3l-1.3 8a6.5 6.5 0 0 1-6.4 5.5h-8.4a6.5 6.5 0 0 1-5-2.4L10.6 31a3 3 0 0 1 4.4-4.1L20 31z"/></svg>
+        </div>
       </div>
       <div class="countdown reveal" id="countdown">
         <div><b data-cd="d">0</b><span data-t="days"></span></div>
@@ -184,6 +188,6 @@
   <script src="data.js?v=28"></script>
   <script src="js/i18n.js?v=24"></script>
   <script src="js/sound.js"></script>
-  <script src="js/app.js?v=27"></script>
+  <script src="js/app.js?v=28"></script>
 </body>
 </html>

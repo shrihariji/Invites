@@ -603,7 +603,7 @@
   };
   // One short scratch is enough: the whole seal clears by itself (same feel as the mehendi).
   let strokes = 0;
-  sc.addEventListener("pointerdown", (e) => { if (scratched) return; e.preventDefault(); scratching = true; scratchTouched = true; try { sc.setPointerCapture(e.pointerId); } catch (_) {} S.unlock(); scratchAt(e); strokes++; });
+  sc.addEventListener("pointerdown", (e) => { if (scratched) return; e.preventDefault(); scratching = true; scratchTouched = true; sc.parentElement.classList.add("touched"); try { sc.setPointerCapture(e.pointerId); } catch (_) {} S.unlock(); scratchAt(e); strokes++; });
   sc.addEventListener("pointermove", (e) => { if (scratching && !scratched) { e.preventDefault(); scratchAt(e); if (++strokes > 6) revealAll(); } });
   sc.addEventListener("pointerup", () => { scratching = false; if (strokes) revealAll(); });
   sc.addEventListener("pointercancel", () => { scratching = false; if (strokes) revealAll(); });
