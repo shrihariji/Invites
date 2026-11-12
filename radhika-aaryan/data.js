@@ -54,7 +54,7 @@ window.INVITE = {
       day: "01st", month: "JAN", year: "2027", weekday: "Friday",
       lines: ["04:30 PM Mandap Muhurat"],
       venue: "Sarthi-2 Common Plot",
-      address: "Opp Amin's Hospital, Surdhura Circle to S.G. Road, Thaltej, Ahmedabad",
+      address: "Opp Amin's Hospital, Surdhara Circle to S.G. Road, Thaltej, Ahmedabad",
       attire: "Traditional",
       map: "https://maps.app.goo.gl/vmLNoPGcJRwp1xgN6?g_st=ic",
       start: "2027-01-01T16:30:00+05:30", end: "2027-01-01T19:30:00+05:30"
@@ -73,8 +73,8 @@ window.INVITE = {
 
   family: [
     { title: "Invitees", names: ["Ramesh Patel", "Amita Patel", "Harshit Patel"] },
-    { title: "With Blessings", names: ["Laljibhai R. Patel", "Rukhiben L. Patel", "Lt. Jayantibhai N. Patel", "Gauriben J. Patel"] },
-    { title: "With Best Wishes", names: ["Chandulal Patel", "Madhuben Patel", "Lt. Rasiklal Patel", "Sushilaben Patel",
+    { title: "With Blessings", names: ["Laljibhai R. Patel", "Rukhiben L. Patel", "Late Jayantibhai N. Patel", "Gauriben J. Patel"] },
+    { title: "With Best Wishes", names: ["Chandulal Patel", "Madhuben Patel", "Late Rasiklal Patel", "Sushilaben Patel",
       "Dharmeshkumar Patel", "Surekhaben Patel", "Dr. Priteshkumar Patel", "Dr. Ushaben Patel"] }
   ],
   familyGroup: "(Saras Parivar - Amar Group)",
