@@ -448,3 +448,8 @@ body .hold .ring { position: absolute; inset: -15%; border-radius: 50%; pointer-
   filter: drop-shadow(0 0 4px #ff3d7f88); }
 body .scene:not(.done) .hold .rose { animation: roseBreath 2.4s ease-in-out infinite; }
 @keyframes roseBreath { 50% { filter: drop-shadow(0 8px 14px #a3124a66) drop-shadow(0 0 16px #ffd0e0); } }
+
+/* "Late." keeps its own case inside the all-capitals family names */
+.fam li .late { text-transform: none; letter-spacing: .02em; }
+/* Scratch seal: the page must not move while the guest scratches (one scratch reveals it all) */
+#scratch { touch-action: none !important; }

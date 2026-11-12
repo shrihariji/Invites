@@ -115,7 +115,8 @@
       $(".kb > img", sc).alt = `${e.name}`;
     });
     $("#famList").innerHTML = D.family.map((g) => `
-      <div class="fam ${rv}"><h3>${esc(g.title)}</h3><ul>${g.names.map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>`).join("");
+      <div class="fam ${rv}"><h3>${esc(g.title)}</h3><ul>${g.names.map((n) => { const m = /^(late\.?|lt\.)\s*/i.exec(n);
+        return m ? `<li><span class="late">Late.</span> ${esc(n.slice(m[0].length))}</li>` : `<li>${esc(n)}</li>`; }).join("")}</ul></div>`).join("");
     if (D.rsvp.whatsapp) {
       $("#rsvp").hidden = false;
       $("#rsvpBy").textContent = D.rsvp.by ? `${t("replyBy")} ${D.rsvp.by}` : t("letUsKnow");
@@ -600,15 +601,19 @@
     sx.beginPath(); sx.arc((e.clientX - r.left) * dpr, (e.clientY - r.top) * dpr, 26 * dpr, 0, Math.PI * 2); sx.fill();
     sx.globalCompositeOperation = "source-over";
   };
-  sc.addEventListener("pointerdown", (e) => { scratching = true; scratchTouched = true; sc.setPointerCapture(e.pointerId); S.unlock(); scratchAt(e); });
-  sc.addEventListener("pointermove", (e) => { if (scratching) { scratchAt(e); checkScratch(); } });
-  sc.addEventListener("pointerup", () => { scratching = false; checkScratch(); });
-  sc.addEventListener("pointercancel", () => { scratching = false; });
-  function checkScratch() {
+  // One short scratch is enough: the whole seal clears by itself (same feel as the mehendi).
+  let strokes = 0;
+  sc.addEventListener("pointerdown", (e) => { if (scratched) return; e.preventDefault(); scratching = true; scratchTouched = true; try { sc.setPointerCapture(e.pointerId); } catch (_) {} S.unlock(); scratchAt(e); strokes++; });
+  sc.addEventListener("pointermove", (e) => { if (scratching && !scratched) { e.preventDefault(); scratchAt(e); if (++strokes > 6) revealAll(); } });
+  sc.addEventListener("pointerup", () => { scratching = false; if (strokes) revealAll(); });
+  sc.addEventListener("pointercancel", () => { scratching = false; if (strokes) revealAll(); });
+  function revealAll() { if (!scratched) checkScratch(true); }
+  function checkScratch(force) {
     if (scratched) return;
-    const px = sx.getImageData(0, 0, sc.width, sc.height).data; let clear = 0, tot = 0;
-    for (let i = 3; i < px.length; i += 80) { tot++; if (px[i] === 0) clear++; }
-    if (clear / tot > .62) {
+    let enough = !!force;
+    if (!enough) { const px = sx.getImageData(0, 0, sc.width, sc.height).data; let clear = 0, tot = 0;
+      for (let i = 3; i < px.length; i += 80) { tot++; if (px[i] === 0) clear++; } enough = clear / tot > .62; }
+    if (enough) {
       scratched = true; sc.classList.add("done"); S.chime();
       const r = sc.getBoundingClientRect(); burst(r.left + r.width / 2, r.top + r.height / 2, 120, PAL.gold.concat(PAL.lagna));
       gsap.fromTo(".medal-in > *", { scale: .7 }, { scale: 1, duration: .8, stagger: .1, ease: "back.out(2)" });

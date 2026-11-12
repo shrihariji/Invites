@@ -73,8 +73,8 @@ window.INVITE = {
 
   family: [
     { title: "Invitees", names: ["Ramesh Patel", "Amita Patel", "Harshit Patel"] },
-    { title: "With Blessings", names: ["Laljibhai R. Patel", "Rukhiben L. Patel", "Late Jayantibhai N. Patel", "Gauriben J. Patel"] },
-    { title: "With Best Wishes", names: ["Chandulal Patel", "Madhuben Patel", "Late Rasiklal Patel", "Sushilaben Patel",
+    { title: "With Blessings", names: ["Laljibhai R. Patel", "Rukhiben L. Patel", "Late. Jayantibhai N. Patel", "Gauriben J. Patel"] },
+    { title: "With Best Wishes", names: ["Chandulal Patel", "Madhuben Patel", "Late. Rasiklal Patel", "Sushilaben Patel",
       "Dharmeshkumar Patel", "Surekhaben Patel", "Dr. Priteshkumar Patel", "Dr. Ushaben Patel"] }
   ],
   familyGroup: "(Saras Parivar - Amar Group)",
