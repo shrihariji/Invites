@@ -601,13 +601,45 @@
     sx.beginPath(); sx.arc((e.clientX - r.left) * dpr, (e.clientY - r.top) * dpr, 26 * dpr, 0, Math.PI * 2); sx.fill();
     sx.globalCompositeOperation = "source-over";
   };
-  // One short scratch is enough: the whole seal clears by itself (same feel as the mehendi).
-  let strokes = 0;
-  sc.addEventListener("pointerdown", (e) => { if (scratched) return; e.preventDefault(); scratching = true; scratchTouched = true; sc.parentElement.classList.add("touched"); try { sc.setPointerCapture(e.pointerId); } catch (_) {} S.unlock(); scratchAt(e); strokes++; });
-  sc.addEventListener("pointermove", (e) => { if (scratching && !scratched) { e.preventDefault(); scratchAt(e); if (++strokes > 6) revealAll(); } });
-  sc.addEventListener("pointerup", () => { scratching = false; if (strokes) revealAll(); });
-  sc.addEventListener("pointercancel", () => { scratching = false; if (strokes) revealAll(); });
-  function revealAll() { if (!scratched) checkScratch(true); }
+  // A single touch starts an automatic scratch: visible zigzag strokes wipe the gold away from where the
+  // guest touched (partial reveal), then the rest clears and the date pops (same one-touch feel as the mehendi).
+  let autoRun = false;
+  const eraseDot = (x, y, rad) => { sx.globalCompositeOperation = "destination-out"; sx.beginPath(); sx.arc(x, y, rad, 0, Math.PI * 2); sx.fill(); sx.globalCompositeOperation = "source-over"; };
+  function autoScratch(e) {
+    if (autoRun || scratched) return; autoRun = true;
+    const w = sc.width, h = sc.height, rad = w * .085;
+    const rb = sc.getBoundingClientRect();
+    const fx = e ? Math.min(.85, Math.max(.15, (e.clientX - rb.left) / rb.width)) : .5;
+    const fy = e ? Math.min(.85, Math.max(.15, (e.clientY - rb.top) / rb.height)) : .5;
+    // zigzag rows starting at the touch, then covering the whole seal
+    const rows = [fy, fy - .14, fy + .14, fy - .28, fy + .28, fy - .42, fy + .42].filter((v) => v > .06 && v < .94);
+    const pts = []; rows.forEach((yy, i) => { const left = i % 2 === 0; pts.push([left ? .12 : .88, yy], [left ? .88 : .12, yy]); });
+    pts.unshift([fx, fy]);
+    const segs = []; let total = 0;
+    for (let i = 1; i < pts.length; i++) { const d = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); segs.push([pts[i - 1], pts[i], d]); total += d; }
+    const DUR = calm ? 300 : 1500, t0 = performance.now(); let done = 0;
+    let lastTick = 0;
+    const step = (now) => {
+      const goal = Math.min(1, (now - t0) / DUR) * total;
+      while (done < goal) {               // stamp the brush every few pixels along the path so the stroke is continuous
+        let acc = 0, p = null;
+        for (const [a, b, d] of segs) { if (done <= acc + d) { const k = (done - acc) / d; p = [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k]; break; } acc += d; }
+        if (!p) break;
+        eraseDot(p[0] * w, p[1] * h, rad * (.85 + Math.random() * .3));
+        done += .012;
+      }
+      if (now - lastTick > 110) { lastTick = now; S.pop && S.pop(); }
+      // partial reveal first; once most of the path is drawn, clear the rest and show the full date
+      if (now - t0 >= DUR) { checkScratch(true); return; }
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  sc.addEventListener("pointerdown", (e) => {
+    if (scratched) return; e.preventDefault(); scratchTouched = true; sc.parentElement.classList.add("touched");
+    S.unlock(); autoScratch(e);
+  });
+  sc.addEventListener("pointermove", (e) => { if (!scratched) e.preventDefault(); });
   function checkScratch(force) {
     if (scratched) return;
     let enough = !!force;
