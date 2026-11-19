@@ -23,8 +23,8 @@ window.INVITE = {
   cityLine: "Ahmedabad · Gandhinagar",
 
   // Countdown + scratch reveal point to this moment (India time)
-  mainMoment: "2027-01-02T19:15:00+05:30",
-  dateReveal: { day: "02", month: "JAN", year: "2027", line: "Hast Melap · 07:15 PM" },
+  mainMoment: "2027-01-02T19:00:00+05:30",
+  dateReveal: { day: "02", month: "JAN", year: "2027", line: "Hast Melap · 07:00 PM" },
 
   /* Events. id must stay one of: mehendi, survani, mandva, lagna (it picks the painting,
      the colours and the little ritual). start/end are used for "Add to calendar". */
@@ -52,22 +52,22 @@ window.INVITE = {
     {
       id: "mandva", gu: "માંડવા", name: "Mandva",
       day: "01st", month: "JAN", year: "2027", weekday: "Friday",
-      lines: ["04:30 PM Mandap Muhurat"],
+      lines: ["04:00 PM Mandap Muhurat"],
       venue: "Sarthi-2 Common Plot",
       address: "Opp Amin's Hospital, Surdhara Circle to S.G. Road, Thaltej, Ahmedabad",
       attire: "Traditional",
       map: "https://maps.app.goo.gl/vmLNoPGcJRwp1xgN6?g_st=ic",
-      start: "2027-01-01T16:30:00+05:30", end: "2027-01-01T19:30:00+05:30"
+      start: "2027-01-01T16:00:00+05:30", end: "2027-01-01T19:30:00+05:30"
     },
     {
       id: "lagna", gu: "લગ્ન", name: "Wedding",
       day: "02nd", month: "JAN", year: "2027", weekday: "Saturday",
-      lines: ["Jaan Aagman - 05:00 PM", "Hast Melap - 07:15 PM"],
+      lines: ["Jaan Aagman - 04:30 PM", "Hast Melap - 07:00 PM"],
       venue: "Mystic Falls",
       address: "Gift City, Gandhinagar",
       attire: "Traditional",
       map: "https://maps.app.goo.gl/xFecRNSC5PGF8o1p7",
-      start: "2027-01-02T17:00:00+05:30", end: "2027-01-02T22:00:00+05:30"
+      start: "2027-01-02T16:30:00+05:30", end: "2027-01-02T22:00:00+05:30"
     }
   ],
 
@@ -112,7 +112,7 @@ window.INVITE = {
     inviteText: ["હૃદયના ઉમંગ અને વડીલોના આશીર્વાદ સાથે", "બે આત્માઓના શુભ મિલનના", "આ પાવન પ્રસંગે આપને ભાવભર્યું નિમંત્રણ"],
     dateRange: "૩૦ ડિસેમ્બર ૨૦૨૬ – ૨ જાન્યુઆરી ૨૦૨૭",
     cityLine: "અમદાવાદ · ગાંધીનગર",
-    dateReveal: { day: "૦૨", month: "જાન્યુ.", year: "૨૦૨૭", line: "હસ્તમેળાપ · સાંજે ૭:૧૫" },
+    dateReveal: { day: "૦૨", month: "જાન્યુ.", year: "૨૦૨૭", line: "હસ્તમેળાપ · સાંજે ૭:૦૦" },
     events: [
       { id: "mehendi", name: "મહેંદી", day: "૩૦", month: "ડિસે.", year: "૨૦૨૬", weekday: "બુધવાર",
         lines: ["સાંજે ૪:૦૦ કલાકથી"], venue: "શ્રીકુંજ ગ્રીન્સ",
@@ -121,10 +121,10 @@ window.INVITE = {
         lines: ["સાંજે ૬:૦૦ – સ્નેહમિલન", "ત્યારબાદ ભોજન", "રાત્રે ૮:૦૦ કલાકથી સુરવાણી", "શ્રી બ્રિજરાજ ગઢવી"], venue: "પ્રવેગ અડાલજ",
         address: "સરખેજ - ગાંધીનગર હાઈવે, મહારાજા હોટલની પાછળ, અડાલજ, અમદાવાદ", attire: "ચણિયા ચોળી અને કુર્તા પાયજામા" },
       { id: "mandva", name: "માંડવા", day: "૦૧", month: "જાન્યુ.", year: "૨૦૨૭", weekday: "શુક્રવાર",
-        lines: ["સાંજે ૪:૩૦ – મંડપ મુહૂર્ત"], venue: "સારથિ-૨ કોમન પ્લોટ",
+        lines: ["સાંજે ૪:૦૦ – મંડપ મુહૂર્ત"], venue: "સારથિ-૨ કોમન પ્લોટ",
         address: "અમીન હોસ્પિટલ સામે, સુરધારા સર્કલથી એસ.જી. રોડ, થલતેજ, અમદાવાદ", attire: "પરંપરાગત" },
       { id: "lagna", name: "લગ્ન", day: "૦૨", month: "જાન્યુ.", year: "૨૦૨૭", weekday: "શનિવાર",
-        lines: ["જાન આગમન – સાંજે ૫:૦૦", "હસ્તમેળાપ – સાંજે ૭:૧૫"], venue: "મિસ્ટિક ફોલ્સ",
+        lines: ["જાન આગમન – સાંજે ૪:૩૦", "હસ્તમેળાપ – સાંજે ૭:૦૦"], venue: "મિસ્ટિક ફોલ્સ",
         address: "ગિફ્ટ સિટી, ગાંધીનગર", attire: "પરંપરાગત" }
     ],
     family: [
