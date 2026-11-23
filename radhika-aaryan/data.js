@@ -99,7 +99,7 @@ window.INVITE = {
   // A link can pick the track: add ?music=vocal or ?music=instrumental to the address
   musicOptions: { vocal: "music-vocal-v2.mp3", instrumental: "music-instrumental.mp3",
     soft: "music-vocal-soft.mp3", garden: "music-vocal-garden.mp3", dawn: "music-vocal-dawn.mp3",
-    flute: "music-flute-piano.mp3" },   // ?music=flute - instrumental, no voice: the song melody on flute and piano
+    flute: "music-flute-piano-v2.mp3", flute1: "music-flute-piano.mp3" },   // flute = brighter v2 (concert flute, vibrato, no gaps); flute1 = first, darker   // ?music=flute - instrumental, no voice: the song melody on flute and piano
   // ?music=garden: piano, marimba, vibraphone, cello pizz, strings, tanpura, tabla; ?music=dawn: nylon guitar, piano, zither, flute, cello, violins, tabla   // ?music=soft - same singing, new soft music (tanpura, tabla, piano, strings), 23 Nov 2026
 
   defaultGuest: "Family & Friends",
