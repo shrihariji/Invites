@@ -91,16 +91,23 @@ window.INVITE = {
   // RSVP on WhatsApp. Leave whatsapp empty "" to hide the RSVP section.
   rsvp: { whatsapp: "", by: "" },
 
-  /* Background music (files in assets/audio). Two tracks are kept:
-       "music-vocal-v2.mp3"        - Gujarati folk fusion with sung hook (Radhika-Aaryan)
-       "music-instrumental.mp3" - same feel, no singing
-     Write the one to play below, or "" for no music. */
-  music: "music-vocal-v2.mp3",
-  // A link can pick the track: add ?music=vocal or ?music=instrumental to the address
-  musicOptions: { vocal: "music-vocal-v2.mp3", instrumental: "music-instrumental.mp3",
-    soft: "music-vocal-soft.mp3", garden: "music-vocal-garden.mp3", dawn: "music-vocal-dawn.mp3",
-    flute: "music-flute-piano-v2.mp3", flute1: "music-flute-piano.mp3" },   // flute = brighter v2 (concert flute, vibrato, no gaps); flute1 = first, darker   // ?music=flute - instrumental, no voice: the song melody on flute and piano
-  // ?music=garden: piano, marimba, vibraphone, cello pizz, strings, tanpura, tabla; ?music=dawn: nylon guitar, piano, zither, flute, cello, violins, tabla   // ?music=soft - same singing, new soft music (tanpura, tabla, piano, strings), 23 Nov 2026
+  /* Background music (files in assets/audio).
+     The family chose "Dawn Strings" on 23 Nov 2026: the same singing over new music
+     (nylon guitar, piano, santoor-like zither, flute, cello, violins, soft tabla).
+     Write the file to play below, or "" for no music. */
+  music: "music-vocal-dawn.mp3",
+  /* A link can pick the track with ?music=<name>. "vocal" now plays the chosen song too,
+     so guest links already sent with &music=vocal get it without a new link. */
+  musicOptions: {
+    vocal: "music-vocal-dawn.mp3",          // the chosen song (Dawn Strings)
+    dawn: "music-vocal-dawn.mp3",           // same
+    old: "music-vocal-v2.mp3",              // the first song, softer original music
+    instrumental: "music-instrumental.mp3", // first instrumental, no singing
+    soft: "music-vocal-soft.mp3",           // same singing: tanpura, tabla, piano, strings
+    garden: "music-vocal-garden.mp3",       // same singing: piano, marimba, vibraphone, cello, strings
+    flute: "music-flute-piano-v2.mp3",      // instrumental: the tune on flute and piano (brighter)
+    flute1: "music-flute-piano.mp3"         // instrumental, first darker take
+  },
 
   defaultGuest: "Family & Friends",
 
