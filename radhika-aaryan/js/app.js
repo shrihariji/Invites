@@ -114,9 +114,12 @@
       $(".details-btn", sc).textContent = t("details");
       $(".kb > img", sc).alt = `${e.name}`;
     });
+    const famName = (n) => { const m = /^(late\.?|lt\.)\s*/i.exec(n);
+      return m ? `<span class="late">Late.</span> ${esc(n.slice(m[0].length))}` : esc(n); };
+    const famRows = (g) => (g.rows || (g.names || []).map((n) => [n])).map((r) => r.length > 1
+      ? `<li class="pair"><span>${famName(r[0])}</span><span>${famName(r[1])}</span></li>` : `<li>${famName(r[0])}</li>`).join("");
     $("#famList").innerHTML = D.family.map((g) => `
-      <div class="fam ${rv}"><h3>${esc(g.title)}</h3><ul>${g.names.map((n) => { const m = /^(late\.?|lt\.)\s*/i.exec(n);
-        return m ? `<li><span class="late">Late.</span> ${esc(n.slice(m[0].length))}</li>` : `<li>${esc(n)}</li>`; }).join("")}</ul></div>`).join("");
+      <div class="fam ${rv}"><h3>${esc(g.title)}</h3><ul>${famRows(g)}</ul>${g.note ? `<p class="fam-note">${esc(g.note)}</p>` : ""}</div>`).join("");
     if (D.rsvp.whatsapp) {
       $("#rsvp").hidden = false;
       $("#rsvpBy").textContent = D.rsvp.by ? `${t("replyBy")} ${D.rsvp.by}` : t("letUsKnow");
@@ -290,7 +293,7 @@
   }
 
   // ---------- "Swipe up" hint (like Reels) - shows when the guest pauses ----------
-  const sw = $("#swipe"); let swT = 0, swCount = 0;
+  const sw = $("#swipe"); let swT = 0, swOff = 0, swCount = 0;
   const atEnd = () => innerHeight + scrollY > document.documentElement.scrollHeight - 260;
   function swShow() {
     if (document.body.classList.contains("locked") || !sheet.hidden || atEnd()) return;
@@ -298,6 +301,7 @@
     const live = $$(".scene").find((x) => { const r = x.getBoundingClientRect(); return r.top < mid && r.bottom > mid; });
     if (live && !live.classList.contains("done")) return;   // the ritual hint is the guide here
     sw.classList.add("show"); peek();
+    clearTimeout(swOff); swOff = setTimeout(() => sw.classList.remove("show"), 2600);
   }
   let peeks = 0;
   function peek() {   // Reels-style nudge: the page lifts a little and springs back - once, first screen only
@@ -413,7 +417,7 @@
     let p = 0, down = false, last = 0, t0 = 0;
     const loop = (t) => {
       const dt = Math.min(50, t - (last || t)); last = t;
-      p = Math.max(0, Math.min(1, p + (down ? dt / 2400 : -dt / 1200)));
+      p = Math.max(0, Math.min(1, p + (down ? dt / 1200 : -dt / 1200)));
       const lit = Math.round(p * petals.length);
       petals.forEach((e, i) => e.classList.toggle("lit", i < lit));
       btn.style.setProperty("--p", p.toFixed(3));
@@ -538,8 +542,9 @@
     $("#sheetBody").innerHTML = `
       <img class="gu" src="assets/img/gu-${id}.webp" alt="${esc(e.gu)}">
       <p class="en" id="sheetTitle">${esc(e.name)}</p>
-      <p class="when">${esc(e.weekday)} · ${esc(e.day)} ${esc(e.month)} ${esc(e.year)}</p>
+      <p class="when">${esc(e.day)} | ${esc(e.month)} | ${esc(e.year)}</p>
       <ul class="lines">${e.lines.map((l) => `<li>${esc(l)}</li>`).join("")}</ul>
+      <p class="wkday">${esc(e.weekday)}</p>
       <p class="venue">${esc(e.venue)}</p>
       <p class="addr">${esc(e.address)}</p>
       <p class="attire">${t("attire")} ~ ${esc(e.attire)}</p>

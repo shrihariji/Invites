@@ -30,7 +30,7 @@ window.INVITE = {
      the colours and the little ritual). start/end are used for "Add to calendar". */
   events: [
     {
-      id: "mehendi", gu: "મહેંદી", name: "Mehendi",
+      id: "mehendi", gu: "મહેંદી", name: "Mehandi",
       day: "30th", month: "DEC", year: "2026", weekday: "Wednesday",
       lines: ["04:00 PM Onwards"],
       venue: "Shreekunj Greens",
@@ -42,7 +42,7 @@ window.INVITE = {
     {
       id: "survani", gu: "સુરવાણી", name: "Cultural Survani",
       day: "31st", month: "DEC", year: "2026", weekday: "Thursday",
-      lines: ["06:00 PM - Meet and Greet", "Followed By Dinner", "8:00 PM Onwards Survani By", "BRIJRAJ GADHVI"],
+      lines: ["Meet and Greet - 06:00 PM", "Followed By Dinner", "Survani By Brijraj Gadhvi", "8:00 PM Onwards"],
       venue: "Praveg Adalaj",
       address: "Sarkhej - Gandhinagar Hwy, Behind Maharaja Hotel, Adalaj, Ahmedabad",
       attire: "Chaniya Choli & Kurta Pajama",
@@ -52,12 +52,12 @@ window.INVITE = {
     {
       id: "mandva", gu: "માંડવા", name: "Mandva",
       day: "01st", month: "JAN", year: "2027", weekday: "Friday",
-      lines: ["04:00 PM Mandap Muhurat"],
+      lines: ["Mandap Muhurat - 04:30 PM", "Mameru - 05:00 PM"],
       venue: "Sarthi-2 Common Plot",
       address: "Opp Amin's Hospital, Surdhara Circle to S.G. Road, Thaltej, Ahmedabad",
       attire: "Traditional",
       map: "https://maps.app.goo.gl/vmLNoPGcJRwp1xgN6?g_st=ic",
-      start: "2027-01-01T16:00:00+05:30", end: "2027-01-01T19:30:00+05:30"
+      start: "2027-01-01T16:30:00+05:30", end: "2027-01-01T19:30:00+05:30"
     },
     {
       id: "lagna", gu: "લગ્ન", name: "Wedding",
@@ -71,13 +71,17 @@ window.INVITE = {
     }
   ],
 
+  /* Family list, laid out as on the card: each row is [left, right] (husband, wife) or a single centred name.
+     "note" is the line under the group, e.g. (Saras Parivar - Amar Group). Write "Late." before a name, never "Lt." */
   family: [
-    { title: "Invitees", names: ["Ramesh Patel", "Amita Patel", "Harshit Patel"] },
-    { title: "With Blessings", names: ["Laljibhai R. Patel", "Rukhiben L. Patel", "Late. Jayantibhai N. Patel", "Gauriben J. Patel"] },
-    { title: "With Best Wishes", names: ["Chandulal Patel", "Madhuben Patel", "Late. Rasiklal Patel", "Sushilaben Patel",
-      "Dharmeshkumar Patel", "Surekhaben Patel", "Dr. Priteshkumar Patel", "Dr. Ushaben Patel"] }
+    { title: "Invitees", rows: [["Laljibhai R. Patel", "Rukhiben L. Patel"], ["Ramesh L. Patel", "Amita R. Patel"], ["Harshit Patel"]] },
+    { title: "Mameru", rows: [["Late. Jayantibhai Patel", "Gauriben Patel"], ["Late. Brijeshbhai Patel", "Minaxiben Patel"], ["Dhruv Patel", "Kashish Patel"]],
+      note: "(Jakasaniya Parivar)" },
+    { title: "With Best Wishes", rows: [["Chandulal Patel", "Madhuben Patel"], ["Late. Rasiklal Patel", "Sushilaben Patel"],
+      ["Dharmeshkumar Patel", "Surekhaben Patel"], ["Dr. Priteshkumar Patel", "Dr. Ushaben Patel"]],
+      note: "(Saras Parivar - Amar Group)" }
   ],
-  familyGroup: "(Saras Parivar - Amar Group)",
+  familyGroup: "",
   showLogo: true,               // Saras Detergent logo, as on the card
   blessingsNote: "Blessings Only",
 
@@ -93,7 +97,8 @@ window.INVITE = {
      Write the one to play below, or "" for no music. */
   music: "music-vocal-v2.mp3",
   // A link can pick the track: add ?music=vocal or ?music=instrumental to the address
-  musicOptions: { vocal: "music-vocal-v2.mp3", instrumental: "music-instrumental.mp3" },
+  musicOptions: { vocal: "music-vocal-v2.mp3", instrumental: "music-instrumental.mp3",
+    soft: "music-vocal-soft.mp3" },   // ?music=soft - same singing, new soft music (tanpura, tabla, piano, strings), 23 Nov 2026
 
   defaultGuest: "Family & Friends",
 
@@ -118,22 +123,24 @@ window.INVITE = {
         lines: ["સાંજે ૪:૦૦ કલાકથી"], venue: "શ્રીકુંજ ગ્રીન્સ",
         address: "પ્રવિશ બ્રિલિયા ટાવરની પાછળ, છારોડી તળાવ સામે, એસ.જી. હાઈવે, અમદાવાદ", attire: "ઇન્ડો-વેસ્ટર્ન" },
       { id: "survani", name: "સાંસ્કૃતિક સુરવાણી", day: "૩૧", month: "ડિસે.", year: "૨૦૨૬", weekday: "ગુરુવાર",
-        lines: ["સાંજે ૬:૦૦ – સ્નેહમિલન", "ત્યારબાદ ભોજન", "રાત્રે ૮:૦૦ કલાકથી સુરવાણી", "શ્રી બ્રિજરાજ ગઢવી"], venue: "પ્રવેગ અડાલજ",
+        lines: ["સ્નેહમિલન – સાંજે ૬:૦૦", "ત્યારબાદ ભોજન", "સુરવાણી – શ્રી બ્રિજરાજ ગઢવી", "રાત્રે ૮:૦૦ કલાકથી"], venue: "પ્રવેગ અડાલજ",
         address: "સરખેજ - ગાંધીનગર હાઈવે, મહારાજા હોટલની પાછળ, અડાલજ, અમદાવાદ", attire: "ચણિયા ચોળી અને કુર્તા પાયજામા" },
       { id: "mandva", name: "માંડવા", day: "૦૧", month: "જાન્યુ.", year: "૨૦૨૭", weekday: "શુક્રવાર",
-        lines: ["સાંજે ૪:૦૦ – મંડપ મુહૂર્ત"], venue: "સારથિ-૨ કોમન પ્લોટ",
+        lines: ["મંડપ મુહૂર્ત – સાંજે ૪:૩૦", "મામેરું – સાંજે ૫:૦૦"], venue: "સારથિ-૨ કોમન પ્લોટ",
         address: "અમીન હોસ્પિટલ સામે, સુરધારા સર્કલથી એસ.જી. રોડ, થલતેજ, અમદાવાદ", attire: "પરંપરાગત" },
       { id: "lagna", name: "લગ્ન", day: "૦૨", month: "જાન્યુ.", year: "૨૦૨૭", weekday: "શનિવાર",
         lines: ["જાન આગમન – સાંજે ૪:૩૦", "હસ્તમેળાપ – સાંજે ૭:૦૦"], venue: "મિસ્ટિક ફોલ્સ",
         address: "ગિફ્ટ સિટી, ગાંધીનગર", attire: "પરંપરાગત" }
     ],
     family: [
-      { title: "નિમંત્રક", names: ["રમેશ પટેલ", "અમિતા પટેલ", "હર્ષિત પટેલ"] },
-      { title: "શુભ આશીર્વાદ", names: ["લાલજીભાઈ આર. પટેલ", "રૂખીબેન એલ. પટેલ", "સ્વ. જયંતીભાઈ એન. પટેલ", "ગૌરીબેન જે. પટેલ"] },
-      { title: "શુભેચ્છક", names: ["ચંદુલાલ પટેલ", "મધુબેન પટેલ", "સ્વ. રસિકલાલ પટેલ", "સુશીલાબેન પટેલ",
-        "ધર્મેશકુમાર પટેલ", "સુરેખાબેન પટેલ", "ડૉ. પ્રિતેશકુમાર પટેલ", "ડૉ. ઉષાબેન પટેલ"] }
+      { title: "નિમંત્રક", rows: [["લાલજીભાઈ આર. પટેલ", "રૂખીબેન એલ. પટેલ"], ["રમેશ એલ. પટેલ", "અમિતા આર. પટેલ"], ["હર્ષિત પટેલ"]] },
+      { title: "મામેરું", rows: [["સ્વ. જયંતીભાઈ પટેલ", "ગૌરીબેન પટેલ"], ["સ્વ. બ્રિજેશભાઈ પટેલ", "મીનાક્ષીબેન પટેલ"], ["ધ્રુવ પટેલ", "કશિશ પટેલ"]],
+        note: "(જાકાસણીયા પરિવાર)" },
+      { title: "શુભેચ્છક", rows: [["ચંદુલાલ પટેલ", "મધુબેન પટેલ"], ["સ્વ. રસિકલાલ પટેલ", "સુશીલાબેન પટેલ"],
+        ["ધર્મેશકુમાર પટેલ", "સુરેખાબેન પટેલ"], ["ડૉ. પ્રિતેશકુમાર પટેલ", "ડૉ. ઉષાબેન પટેલ"]],
+        note: "(સારસ પરિવાર - અમર ગ્રુપ)" }
     ],
-    familyGroup: "(સારસ પરિવાર - અમર ગ્રુપ)",
+    familyGroup: "",
     blessingsNote: "ફક્ત આશીર્વાદ",
     photosTitle: "અમારી યાદગાર પળો",
     defaultGuest: "સ્વજનો",
