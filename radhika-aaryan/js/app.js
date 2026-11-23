@@ -114,12 +114,26 @@
       $(".details-btn", sc).textContent = t("details");
       $(".kb > img", sc).alt = `${e.name}`;
     });
+    function fitFam() {   // every name on one line: shrink the whole list by one factor until the longest name fits
+      const L = $("#famList"); if (!L) return;
+      const lis = $$(".fam li", L); lis.forEach((li) => (li.style.fontSize = ""));
+      let k = 1;
+      lis.forEach((li) => {
+        const pair = li.classList.contains("pair");
+        const gap = pair ? parseFloat(getComputedStyle(li).columnGap) || 0 : 0;
+        const room = pair ? (li.clientWidth - gap) / 2 : li.clientWidth;
+        (pair ? [...li.children] : [li]).forEach((c) => { const w = c.scrollWidth; if (room > 0 && w > room) k = Math.min(k, (room - 2) / w); });
+      });
+      if (k < 1) lis.forEach((li) => (li.style.fontSize = Math.max(9, parseFloat(getComputedStyle(li).fontSize) * k).toFixed(2) + "px"));
+    }
+    window.__fitFam = fitFam;
     const famName = (n) => { const m = /^(late\.?|lt\.)\s*/i.exec(n);
       return m ? `<span class="late">Late.</span> ${esc(n.slice(m[0].length))}` : esc(n); };
     const famRows = (g) => (g.rows || (g.names || []).map((n) => [n])).map((r) => r.length > 1
       ? `<li class="pair"><span>${famName(r[0])}</span><span>${famName(r[1])}</span></li>` : `<li>${famName(r[0])}</li>`).join("");
     $("#famList").innerHTML = D.family.map((g) => `
       <div class="fam ${rv}"><h3>${esc(g.title)}</h3><ul>${famRows(g)}</ul>${g.note ? `<p class="fam-note">${esc(g.note)}</p>` : ""}</div>`).join("");
+    fitFam();
     if (D.rsvp.whatsapp) {
       $("#rsvp").hidden = false;
       $("#rsvpBy").textContent = D.rsvp.by ? `${t("replyBy")} ${D.rsvp.by}` : t("letUsKnow");
@@ -601,6 +615,8 @@
     sx.font = `${LANG === "gu" ? 20 * dpr : 26 * dpr}px "Pinyon Script", "Rasa", cursive`; sx.fillText(t("scratch2"), w / 2, h / 2 + 24 * dpr);
   }
   document.fonts.ready.then(paintScratch);
+  document.fonts.ready.then(() => window.__fitFam && window.__fitFam());
+  addEventListener("resize", () => window.__fitFam && window.__fitFam());
   const scratchAt = (e) => {
     const r = sc.getBoundingClientRect(); sx.globalCompositeOperation = "destination-out";
     sx.beginPath(); sx.arc((e.clientX - r.left) * dpr, (e.clientY - r.top) * dpr, 26 * dpr, 0, Math.PI * 2); sx.fill();

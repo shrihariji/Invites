@@ -471,14 +471,16 @@ body .scene:not(.done) .hold .rose { animation: roseBreath 2.4s ease-in-out infi
 @media (prefers-reduced-motion: reduce) { .sh-hand, .sh-trail polyline { animation: none; } .sh-trail polyline { stroke-dashoffset: 0; } .sh-hand { left: 50%; top: 50%; } }
 
 /* Family list in two columns, as on the card (23 Nov 2026): left name right-aligned, right name left-aligned */
-.fam li.pair { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; }
+.fam li.pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 12px; }
+.fam li, .fam li span { white-space: nowrap; }   /* a name never breaks; js fitFam() shrinks the list to fit the phone */
 .fam li.pair span:first-child { text-align: right; }
 .fam li.pair span:last-child { text-align: left; }
 .fam-note { font-family: "Marcellus", "Rasa", serif; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--leaf); margin: -12px 0 26px; }
 .fam-group:empty { display: none; }
 @media (max-width: 430px) {
+  .family { padding-left: 3%; padding-right: 3%; }
   .fam-card { padding-left: 6px; padding-right: 6px; }
-  .fam li { font-size: min(12.4px, 3.2vw); letter-spacing: .01em; }
+  .fam li { font-size: min(13.5px, 3.6vw); letter-spacing: .01em; }
   .fam li.pair { column-gap: 8px; }
   .lang-gu .fam li { font-size: 14.5px; }
 }
